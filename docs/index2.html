@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بندة - اهتم بنظامك الغذائي معنا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+        
+        .category-circle:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+        
+        .banner-bg {
+            background: linear-gradient(135deg, #8B5A9D 0%, #6B46A3 100%);
+        }
+        
+        .search-focus:focus {
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+        
+        /* Banner Slider Styles */
+        .banner-slider {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            cursor: grab;
+            user-select: none;
+        }
+        
+        .banner-slider:active {
+            cursor: grabbing;
+        }
+        
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            background-size: contain;
+            /* background-position: center; */
+            background-repeat: no-repeat;
+        }
+        
+        .banner-slide.active {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .banner-slider {
+                height: 160px !important;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .banner-slide {
+                background-size: cover;
+            }
+        }
+        
+
+        
+        .slider-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .slider-nav-btn:hover {
+            background: white;
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .slider-nav-btn.prev {
+            left: 20px;
+        }
+        
+        .slider-nav-btn.next {
+            right: 20px;
+        }
+        
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <!-- Top Bar -->
+        <div class="bg-gray-100 py-2">
+            <div class="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
+                <div class="flex items-center gap-4">
+                    <span class="text-gray-600">🎯 توصيل مجاني للطلبات أكثر من 200 ريال</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="text-gray-600 hover:text-green-600 transition-colors">العربية</button>
+                    <span class="text-gray-400">|</span>
+                    <button class="text-gray-600 hover:text-green-600 transition-colors">English</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Header -->
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center gap-8">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <div class="flex items-center gap-2">
+                        <div class="bg-green-600 text-white px-4 py-2 rounded-lg font-bold text-xl">
+                            بندة
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl">
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            placeholder="ابحث عن المنتجات..."
+                            class="w-full py-3 px-4 pr-12 rounded-lg border border-gray-300 search-focus outline-none"
+                        >
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-green-600 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- User Actions -->
+                <div class="flex items-center gap-4">
+                    <button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        <span>إنشاء حساب/دخول</span>
+                    </button>
+                    
+                    <button class="relative p-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
+                        </svg>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex items-center justify-between overflow-x-auto scrollbar-hide">
+                    <div class="flex items-center gap-8 py-4">
+                        <a href="#" class="text-green-600 font-semibold whitespace-nowrap border-b-2 border-green-600 pb-4">الرئيسية</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600 whitespace-nowrap pb-4 transition-colors">الفواكه والخضار</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600 whitespace-nowrap pb-4 transition-colors">اللحوم والدواجن</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600 whitespace-nowrap pb-4 transition-colors">الألبان والأجبان</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600 whitespace-nowrap pb-4 transition-colors">المخبوزات</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600 whitespace-nowrap pb-4 transition-colors">المشروبات</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600 whitespace-nowrap pb-4 transition-colors">العناية الشخصية</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600 whitespace-nowrap pb-4 transition-colors">منتجات المنزل</a>
+                    </div>
+                    
+                    <button class="text-green-600 font-semibold whitespace-nowrap">
+                        عرض جميع التصنيفات
+                        <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Banner Slider -->
+    <section class="banner-slider relative">
+        <!-- Slide 1 -->
+        <div class="banner-slide active" style="background-image: url('./first_banners_section/1.jpg')"></div>
+
+        <!-- Slide 2 -->
+        <div class="banner-slide" style="background-image: url('./first_banners_section/2.jpg')"></div>
+
+        <!-- Slide 3 -->
+        <div class="banner-slide" style="background-image: url('./first_banners_section/3.jpg')"></div>
+
+        <!-- Slide 4 -->
+        <div class="banner-slide" style="background-image: url('./first_banners_section/4.jpg')"></div>
+
+        <!-- Slide 5 -->
+        <div class="banner-slide" style="background-image: url('./first_banners_section/5.jpg')"></div>
+
+        <!-- Navigation Buttons -->
+        <button class="slider-nav-btn prev" onclick="changeSlide(-1)">
+            <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button class="slider-nav-btn next" onclick="changeSlide(1)">
+            <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Dots Navigation -->
+        <div class="slider-dots">
+            <button class="slider-dot active" onclick="currentSlide(1)"></button>
+            <button class="slider-dot" onclick="currentSlide(2)"></button>
+            <button class="slider-dot" onclick="currentSlide(3)"></button>
+            <button class="slider-dot" onclick="currentSlide(4)"></button>
+            <button class="slider-dot" onclick="currentSlide(5)"></button>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between mb-8">
+                <button class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                
+                <div class="flex gap-8 overflow-x-auto scrollbar-hide">
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥩
+                        </div>
+                        <span class="text-sm font-medium text-center">البروتين</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥑
+                        </div>
+                        <span class="text-sm font-medium text-center">كيتو</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥑
+                        </div>
+                        <span class="text-sm font-medium text-center">كيتو</span>
+                    </div>
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥑
+                        </div>
+                        <span class="text-sm font-medium text-center">كيتو</span>
+                    </div>
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥑
+                        </div>
+                        <span class="text-sm font-medium text-center">كيتو</span>
+                    </div>
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥑
+                        </div>
+                        <span class="text-sm font-medium text-center">كيتو</span>
+                    </div>
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥑
+                        </div>
+                        <span class="text-sm font-medium text-center">كيتو</span>
+                    </div>
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥑
+                        </div>
+                        <span class="text-sm font-medium text-center">كيتو</span>
+                    </div>
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥑
+                        </div>
+                        <span class="text-sm font-medium text-center">كيتو</span>
+                    </div>
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🥛
+                        </div>
+                        <span class="text-sm font-medium text-center">خالي من اللاكتوز</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🚫🌾
+                        </div>
+                        <span class="text-sm font-medium text-center">خالي من الجلوتين</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-amber-600 to-amber-800 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🍯
+                        </div>
+                        <span class="text-sm font-medium text-center">خالي من السكر</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🎯
+                        </div>
+                        <span class="text-sm font-medium text-center">منخفض الكوليسترول</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🍊
+                        </div>
+                        <span class="text-sm font-medium text-center">منتجات طازجة</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center category-circle cursor-pointer">
+                        <div class="w-24 h-24 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center text-white text-3xl mb-3">
+                            🌿
+                        </div>
+                        <span class="text-sm font-medium text-center">خضروات كيتونية</span>
+                    </div>
+                </div>
+                
+                <button class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Cards Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Magazine Card -->
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-6 card-hover cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">مجلة العروض</h3>
+                            <h4 class="text-lg text-gray-700">عروض الأسواق</h4>
+                        </div>
+                        <div class="text-4xl">🏪</div>
+                    </div>
+                    <button class="bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-800 transition-colors">
+                        عرض المجلة
+                    </button>
+                </div>
+                
+                <!-- Smart Choice Card -->
+                <div class="bg-gradient-to-br from-red-100 to-red-200 rounded-2xl p-6 card-hover cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">الاختيار الذكي</h3>
+                            <h4 class="text-lg text-gray-700">التوفير</h4>
+                        </div>
+                        <div class="text-4xl">🛒</div>
+                    </div>
+                    <div class="flex gap-2 mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">SALE</span>
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">SALE</span>
+                    </div>
+                    <button class="bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-800 transition-colors">
+                        استكشف العروض
+                    </button>
+                </div>
+                
+                <!-- Fresh Vegetables Card -->
+                <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl p-6 card-hover cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">الأصناف الحصرية</h3>
+                            <h4 class="text-lg text-gray-700">بلس</h4>
+                        </div>
+                        <div class="text-4xl">🥬</div>
+                    </div>
+                    <button class="bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-800 transition-colors">
+                        استكشف المزيد
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="bg-white py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">اشترك في النشرة الإخبارية</h2>
+            <p class="text-gray-600 mb-8">احصل على أحدث العروض والمنتجات الجديدة</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input 
+                    type="email" 
+                    placeholder="أدخل بريدك الإلكتروني"
+                    class="flex-1 py-3 px-4 rounded-lg border border-gray-300 search-focus outline-none"
+                >
+                <button class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                    اشتراك
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <div>
+                    <div class="bg-green-600 text-white px-4 py-2 rounded-lg font-bold text-xl mb-4 inline-block">
+                        بندة
+                    </div>
+                    <p class="text-gray-300 mb-4">أفضل سوبر ماركت يقدم أجود المنتجات بأفضل الأسعار</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">📘</a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">📷</a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">🐦</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">الأقسام</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">الفواكه والخضار</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">اللحوم والدواجن</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">الألبان والأجبان</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">المخبوزات</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">خدمة العملاء</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">اتصل بنا</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">الأسئلة الشائعة</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">سياسة الإرجاع</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">التوصيل والشحن</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">معلومات التواصل</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>📞 8001234567</li>
+                        <li>📧 info@panda.com.sa</li>
+                        <li>📍 الرياض، المملكة العربية السعودية</li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 بندة. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add cart functionality (simple example)
+        let cartCount = 3;
+        
+        function updateCart() {
+            const cartBadge = document.querySelector('.absolute.-top-1.-right-1');
+            if (cartBadge) {
+                cartBadge.textContent = cartCount;
+                
+                // Add animation
+                cartBadge.classList.add('animate-bounce');
+                setTimeout(() => {
+                    cartBadge.classList.remove('animate-bounce');
+                }, 1000);
+            }
+        }
+
+        // Newsletter subscription
+        const newsletterForm = document.querySelector('section:nth-of-type(4)');
+        if (newsletterForm) {
+            const button = newsletterForm.querySelector('button');
+            const input = newsletterForm.querySelector('input');
+            
+            button.addEventListener('click', function() {
+                if (input.value.trim()) {
+                    alert('شكراً لاشتراكك في النشرة الإخبارية!');
+                    input.value = '';
+                } else {
+                    alert('يرجى إدخال بريد إلكتروني صحيح');
+                }
+            });
+        }
+
+        // Banner Slider Functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Normalize slide index
+            if (n >= totalSlides) currentSlideIndex = 0;
+            if (n < 0) currentSlideIndex = totalSlides - 1;
+            
+            // Show current slide
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function changeSlide(n) {
+            currentSlideIndex += n;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(n) {
+            currentSlideIndex = n - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            currentSlideIndex++;
+            showSlide(currentSlideIndex);
+        }, 5000);
+
+        // Enhanced Touch/Swipe support for mobile and desktop
+        let startX = 0;
+        let startY = 0;
+        let endX = 0;
+        let endY = 0;
+        let isDown = false;
+
+        const slider = document.querySelector('.banner-slider');
+        
+        // Touch events for mobile
+        slider.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+
+        slider.addEventListener('touchend', e => {
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            handleSwipe();
+        });
+
+        // Mouse events for desktop
+        slider.addEventListener('mousedown', e => {
+            isDown = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            slider.style.cursor = 'grabbing';
+        });
+
+        slider.addEventListener('mouseup', e => {
+            if (!isDown) return;
+            isDown = false;
+            endX = e.clientX;
+            endY = e.clientY;
+            slider.style.cursor = 'grab';
+            handleSwipe();
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.style.cursor = 'grab';
+        });
+
+        function handleSwipe() {
+            const deltaX = startX - endX;
+            const deltaY = startY - endY;
+            
+            // Check if horizontal swipe is more significant than vertical
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (Math.abs(deltaX) > 30) { // Reduced threshold for better sensitivity
+                    if (deltaX > 0) {
+                        changeSlide(1); // Swipe left - next slide
+                    } else {
+                        changeSlide(-1); // Swipe right - previous slide
+                    }
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+    </script>
+</body>
+</html>
