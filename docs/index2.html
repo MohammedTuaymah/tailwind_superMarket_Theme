@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بندة - اهتم بنظامك الغذائي معنا</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>  <!-- Add Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <!-- Add Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
         
@@ -12,6 +16,15 @@
             font-family: 'Noto Sans Arabic', sans-serif;
         }
         
+    .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
+      display: none;
+    }
+    .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+      content: none;
+    }
+    .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+      content: none;
+    }
         .card-hover:hover {
             transform: translateY(-4px);
             transition: all 0.3s ease;
@@ -262,124 +275,169 @@
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center justify-between mb-8">
-                <button class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </button>
-                
-                <div class="flex gap-8 overflow-x-auto scrollbar-hide">
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥩
-                        </div>
-                        <span class="text-sm font-medium text-center">البروتين</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥑
-                        </div>
-                        <span class="text-sm font-medium text-center">كيتو</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥑
-                        </div>
-                        <span class="text-sm font-medium text-center">كيتو</span>
-                    </div>
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥑
-                        </div>
-                        <span class="text-sm font-medium text-center">كيتو</span>
-                    </div>
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥑
-                        </div>
-                        <span class="text-sm font-medium text-center">كيتو</span>
-                    </div>
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥑
-                        </div>
-                        <span class="text-sm font-medium text-center">كيتو</span>
-                    </div>
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥑
-                        </div>
-                        <span class="text-sm font-medium text-center">كيتو</span>
-                    </div>
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥑
-                        </div>
-                        <span class="text-sm font-medium text-center">كيتو</span>
-                    </div>
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥑
-                        </div>
-                        <span class="text-sm font-medium text-center">كيتو</span>
-                    </div>
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🥛
-                        </div>
-                        <span class="text-sm font-medium text-center">خالي من اللاكتوز</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🚫🌾
-                        </div>
-                        <span class="text-sm font-medium text-center">خالي من الجلوتين</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-amber-600 to-amber-800 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🍯
-                        </div>
-                        <span class="text-sm font-medium text-center">خالي من السكر</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🎯
-                        </div>
-                        <span class="text-sm font-medium text-center">منخفض الكوليسترول</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🍊
-                        </div>
-                        <span class="text-sm font-medium text-center">منتجات طازجة</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center category-circle cursor-pointer">
-                        <div class="w-24 h-24 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center text-white text-3xl mb-3">
-                            🌿
-                        </div>
-                        <span class="text-sm font-medium text-center">خضروات كيتونية</span>
-                    </div>
-                </div>
-                
-                <button class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-            </div>
+
+
+  <!-- Categories Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">جميع الأقسام</h2>
+        <p class="text-gray-500">تناسب جميع الأذواق</p>
+        <div class="flex items-center justify-center gap-2 mt-4">
+          <div class="w-16 h-[1px] bg-gray-300"></div>
+          <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+          <div class="w-16 h-[1px] bg-gray-300"></div>
         </div>
-    </section>
+      </div>
+
+      <!-- Categories Slider -->
+      <div class="swiper categories-slider overflow-hidden relative px-10">
+        <div class="swiper-wrapper">
+          <!-- Category 1 - عود -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop" alt="عود" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">عود</h3>
+              <p class="text-sm text-gray-500">استمتع بسحر العود</p>
+            </div>
+          </div>
+
+          <!-- Category 2 - عناية بالبشرة -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=300&h=300&fit=crop" alt="عناية بالبشرة" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">عناية بالبشرة</h3>
+              <p class="text-sm text-gray-500">استمتع ببشرة نضرة</p>
+            </div>
+          </div>
+
+          <!-- Category 3 - الأظافر -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=300&h=300&fit=crop" alt="الأظافر" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">الأظافر</h3>
+              <p class="text-sm text-gray-500">اعتني بنفسك</p>
+            </div>
+          </div>
+
+          <!-- Category 4 - العناية بالشعر -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&h=300&fit=crop" alt="العناية بالشعر" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">العناية بالشعر</h3>
+              <p class="text-sm text-gray-500">تألق بشعر لامع</p>
+            </div>
+          </div>
+
+          <!-- Category 5 - عطور -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=300&h=300&fit=crop" alt="عطور" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">عطور</h3>
+              <p class="text-sm text-gray-500">لمسة من الأناقة</p>
+            </div>
+          </div>
+
+          <!-- Category 6 - أطفال -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=300&fit=crop" alt="أطفال" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">أطفال</h3>
+              <p class="text-sm text-gray-500">اعتني بصغيرك</p>
+            </div>
+          </div>
+
+          <!-- Category 7 - فساتين -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=300&fit=crop" alt="فساتين" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">فساتين</h3>
+              <p class="text-sm text-gray-500">أناقة الطفولة</p>
+            </div>
+          </div>
+
+          <!-- Category 8 - تيشيرتات -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=300&fit=crop" alt="تيشيرتات" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">تيشيرتات</h3>
+              <p class="text-sm text-gray-500">تجربة مختلفة</p>
+            </div>
+          </div>
+
+          <!-- Category 9 - نظارات -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=300&h=300&fit=crop" alt="نظارات" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">نظارات</h3>
+              <p class="text-sm text-gray-500">أناقة بصرية</p>
+            </div>
+          </div>
+
+          <!-- Category 10 - أحذية -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop" alt="أحذية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">أحذية</h3>
+              <p class="text-sm text-gray-500">جودة عالية</p>
+            </div>
+          </div>
+
+          <!-- Category 11 - حقائب -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=300&h=300&fit=crop" alt="حقائب" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">حقائب</h3>
+              <p class="text-sm text-gray-500">تصاميم مبتكرة</p>
+            </div>
+          </div>
+
+          <!-- Category 12 - بطاقات رقمية -->
+          <div class="swiper-slide">
+            <div class="text-center group">
+              <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
+                <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=300&h=300&fit=crop" alt="بطاقات رقمية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1">بطاقات رقمية</h3>
+              <p class="text-sm text-gray-500">اختيارك الأمثل</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Navigation -->
+        <button class="swiper-button-next !text-gray-900 !left-2 !right-auto after:!text-xl"></button>
+        <button class="swiper-button-prev !text-gray-900 !right-2 after:!text-xl"></button>
+
+        <!-- Add Pagination -->
+        <div class="swiper-pagination !relative !bottom-0 mt-6"></div>
+      </div>
+    </div>
+  </section>
+
+
 
     <!-- Promotional Cards Section -->
     <section class="py-12">
@@ -657,6 +715,51 @@
             } else if (e.key === 'ArrowRight') {
                 changeSlide(1);
             }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const categoriesSwiper = new Swiper('.categories-slider', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            centeredSlides: false,
+            freeMode: true,
+            breakpoints: {
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+                640: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 6,
+                    spaceBetween: 25,
+                },
+                1024: {
+                    slidesPerView: 8,
+                    spaceBetween: 30,
+                },
+                1280: {
+                    slidesPerView: 10,
+                    spaceBetween: 35,
+                }
+            },
         });
     </script>
 </body>
