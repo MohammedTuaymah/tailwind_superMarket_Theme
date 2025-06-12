@@ -144,6 +144,27 @@
             background: white;
             transform: scale(1.2);
         }
+
+        /* Categories Slider Enhancement */
+        .swiper-slide {
+            display: flex;
+            align-items: stretch;
+            height: auto;
+        }
+        
+        .categories-slider .swiper-slide {
+            width: auto !important;
+            min-width: 140px;
+        }
+        
+        .categories-slider h3 {
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+        
+        .categories-slider p {
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -292,137 +313,137 @@
       </div>
 
       <!-- Categories Slider -->
-      <div class="swiper categories-slider overflow-hidden relative px-10">
+      <div class="swiper categories-slider overflow-hidden relative px-8">
         <div class="swiper-wrapper">
-          <!-- Category 1 - عود -->
+          <!-- Category 1 - الفواكه والخضار -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop" alt="عود" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=300&h=300&fit=crop" alt="الفواكه والخضار" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">عود</h3>
-              <p class="text-sm text-gray-500">استمتع بسحر العود</p>
+              <h3 class="font-semibold text-gray-900 mb-1">الفواكه والخضار</h3>
+              <p class="text-sm text-gray-500">طازجة يومياً</p>
             </div>
           </div>
 
-          <!-- Category 2 - عناية بالبشرة -->
+          <!-- Category 2 - اللحوم والدواجن -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=300&h=300&fit=crop" alt="عناية بالبشرة" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=300&h=300&fit=crop" alt="اللحوم والدواجن" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">عناية بالبشرة</h3>
-              <p class="text-sm text-gray-500">استمتع ببشرة نضرة</p>
+              <h3 class="font-semibold text-gray-900 mb-1">اللحوم والدواجن</h3>
+              <p class="text-sm text-gray-500">أجود الأنواع</p>
             </div>
           </div>
 
-          <!-- Category 3 - الأظافر -->
+          <!-- Category 3 - الألبان والأجبان -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=300&h=300&fit=crop" alt="الأظافر" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=300&h=300&fit=crop" alt="الألبان والأجبان" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">الأظافر</h3>
-              <p class="text-sm text-gray-500">اعتني بنفسك</p>
+              <h3 class="font-semibold text-gray-900 mb-1">الألبان والأجبان</h3>
+              <p class="text-sm text-gray-500">صحية ومفيدة</p>
             </div>
           </div>
 
-          <!-- Category 4 - العناية بالشعر -->
+          <!-- Category 4 - المخبوزات -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&h=300&fit=crop" alt="العناية بالشعر" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&h=300&fit=crop" alt="المخبوزات" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">العناية بالشعر</h3>
-              <p class="text-sm text-gray-500">تألق بشعر لامع</p>
+              <h3 class="font-semibold text-gray-900 mb-1">المخبوزات</h3>
+              <p class="text-sm text-gray-500">طازجة من الفرن</p>
             </div>
           </div>
 
-          <!-- Category 5 - عطور -->
+          <!-- Category 5 - المشروبات -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=300&h=300&fit=crop" alt="عطور" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=300&fit=crop" alt="المشروبات" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">عطور</h3>
-              <p class="text-sm text-gray-500">لمسة من الأناقة</p>
+              <h3 class="font-semibold text-gray-900 mb-1">المشروبات</h3>
+              <p class="text-sm text-gray-500">مرطبة ومنعشة</p>
             </div>
           </div>
 
-          <!-- Category 6 - أطفال -->
+          <!-- Category 6 - المواد الغذائية -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=300&fit=crop" alt="أطفال" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&h=300&fit=crop" alt="المواد الغذائية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">أطفال</h3>
-              <p class="text-sm text-gray-500">اعتني بصغيرك</p>
+              <h3 class="font-semibold text-gray-900 mb-1">المواد الغذائية</h3>
+              <p class="text-sm text-gray-500">أساسيات المطبخ</p>
             </div>
           </div>
 
-          <!-- Category 7 - فساتين -->
+          <!-- Category 7 - المنظفات -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=300&fit=crop" alt="فساتين" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1585421514738-01798e348946?w=300&h=300&fit=crop" alt="المنظفات" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">فساتين</h3>
-              <p class="text-sm text-gray-500">أناقة الطفولة</p>
+              <h3 class="font-semibold text-gray-900 mb-1">المنظفات</h3>
+              <p class="text-sm text-gray-500">نظافة متكاملة</p>
             </div>
           </div>
 
-          <!-- Category 8 - تيشيرتات -->
+          <!-- Category 8 - العناية الشخصية -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=300&fit=crop" alt="تيشيرتات" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop" alt="العناية الشخصية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">تيشيرتات</h3>
-              <p class="text-sm text-gray-500">تجربة مختلفة</p>
+              <h3 class="font-semibold text-gray-900 mb-1">العناية الشخصية</h3>
+              <p class="text-sm text-gray-500">صحة وجمال</p>
             </div>
           </div>
 
-          <!-- Category 9 - نظارات -->
+          <!-- Category 9 - الحلويات والوجبات الخفيفة -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=300&h=300&fit=crop" alt="نظارات" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=300&h=300&fit=crop" alt="الحلويات والوجبات الخفيفة" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">نظارات</h3>
-              <p class="text-sm text-gray-500">أناقة بصرية</p>
+              <h3 class="font-semibold text-gray-900 mb-1">الحلويات</h3>
+              <p class="text-sm text-gray-500">لذيذة ومميزة</p>
             </div>
           </div>
 
-          <!-- Category 10 - أحذية -->
+          <!-- Category 10 - المنتجات المجمدة -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop" alt="أحذية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=300&h=300&fit=crop" alt="المنتجات المجمدة" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">أحذية</h3>
-              <p class="text-sm text-gray-500">جودة عالية</p>
+              <h3 class="font-semibold text-gray-900 mb-1">المنتجات المجمدة</h3>
+              <p class="text-sm text-gray-500">عملية وسريعة</p>
             </div>
           </div>
 
-          <!-- Category 11 - حقائب -->
+          <!-- Category 11 - منتجات الأطفال -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=300&h=300&fit=crop" alt="حقائب" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=300&fit=crop" alt="منتجات الأطفال" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">حقائب</h3>
-              <p class="text-sm text-gray-500">تصاميم مبتكرة</p>
+              <h3 class="font-semibold text-gray-900 mb-1">منتجات الأطفال</h3>
+              <p class="text-sm text-gray-500">آمنة وصحية</p>
             </div>
           </div>
 
-          <!-- Category 12 - بطاقات رقمية -->
+          <!-- Category 12 - الأدوات المنزلية -->
           <div class="swiper-slide">
             <div class="text-center group">
               <div style="width: 7rem; height: 7rem;" class="mx-auto rounded-full overflow-hidden mb-4 bg-gray-50">
-                <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=300&h=300&fit=crop" alt="بطاقات رقمية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=300&fit=crop" alt="الأدوات المنزلية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
               </div>
-              <h3 class="font-semibold text-gray-900 mb-1">بطاقات رقمية</h3>
-              <p class="text-sm text-gray-500">اختيارك الأمثل</p>
+              <h3 class="font-semibold text-gray-900 mb-1">الأدوات المنزلية</h3>
+              <p class="text-sm text-gray-500">لراحة يومية</p>
             </div>
           </div>
         </div>
@@ -723,7 +744,7 @@
         const categoriesSwiper = new Swiper('.categories-slider', {
             loop: true,
             autoplay: {
-                delay: 3000,
+                delay: 4000,
                 disableOnInteraction: false,
             },
             pagination: {
@@ -735,28 +756,29 @@
                 prevEl: '.swiper-button-prev',
             },
             slidesPerView: 'auto',
-            spaceBetween: 20,
+            spaceBetween: 15,
             centeredSlides: false,
-            freeMode: true,
+            freeMode: false,
+            grabCursor: true,
             breakpoints: {
                 320: {
                     slidesPerView: 2,
                     spaceBetween: 15,
                 },
-                640: {
-                    slidesPerView: 4,
+                480: {
+                    slidesPerView: 3,
                     spaceBetween: 20,
                 },
                 768: {
-                    slidesPerView: 6,
+                    slidesPerView: 4,
                     spaceBetween: 25,
                 },
                 1024: {
-                    slidesPerView: 8,
+                    slidesPerView: 6,
                     spaceBetween: 30,
                 },
                 1280: {
-                    slidesPerView: 10,
+                    slidesPerView: 6,
                     spaceBetween: 35,
                 }
             },
