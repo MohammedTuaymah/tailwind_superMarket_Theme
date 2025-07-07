@@ -911,73 +911,111 @@
      
 
     <!-- Three Promotional Banners -->
-    <section class="py-8 bg-white">
+    <section class="py-12 bg-gradient-to-br from-gray-50 to-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                 <!-- Banner 1: Magazine Offers -->
-                <div class="relative bg-gradient-to-r from-blue-100 to-blue-200 rounded-2xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl banner-shine">
-                    <div class="p-6 text-center">
-                        <div class="text-right mb-4">
-                            <span class="text-sm text-blue-600 font-semibold">مجلة العروض</span>
+                <div class="relative rounded-3xl overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-2xl h-80">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+                         style="background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-800/70 to-blue-600/50"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10 p-8 h-full flex flex-col justify-between text-white">
+                        <div>
+                            <div class="text-right mb-4">
+                                <span class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold border border-white/30">
+                                    مجلة العروض
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">عروض الأسبوع</h3>
+                            <p class="text-blue-100 mb-6 drop-shadow-md">اكتشف أحدث العروض والخصومات المميزة</p>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">عروض الأسبوع</h3>
-                        <p class="text-sm text-gray-600 mb-4">اكتشف أحدث العروض والخصومات</p>
-                        <div class="flex justify-center mb-4">
-                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-                                 alt="مجلة العروض" 
-                                 class="w-24 h-24 object-cover rounded-lg">
+                        
+                        <div class="text-center">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-book-open text-2xl"></i>
+                            </div>
+                            <button class="w-full bg-white/90 text-blue-800 px-6 py-3 rounded-xl font-bold hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                عرض المجلة
+                            </button>
                         </div>
-                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors">
-                            عرض المجلة
-                        </button>
                     </div>
                 </div>
 
                 <!-- Banner 2: Smart Choice -->
-                <div class="relative bg-gradient-to-r from-red-100 to-red-200 rounded-2xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl banner-shine">
-                    <div class="p-6 text-center">
-                        <div class="text-right mb-4">
-                            <span class="text-sm text-red-600 font-semibold">الاختيار الذكي</span>
+                <div class="relative rounded-3xl overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-2xl h-80">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+                         style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-red-800/70 to-red-600/50"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10 p-8 h-full flex flex-col justify-between text-white">
+                        <div>
+                            <div class="text-right mb-4">
+                                <span class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold border border-white/30">
+                                    الاختيار الذكي
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">التوفير</h3>
+                            <p class="text-red-100 mb-6 drop-shadow-md">خيارات ذكية للتوفير والجودة</p>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">التوفير</h3>
-                        <p class="text-sm text-gray-600 mb-4">خيارات ذكية للتوفير</p>
-                        <div class="flex justify-center mb-4">
-                            <div class="w-24 h-24 bg-red-500 rounded-lg flex items-center justify-center">
+                        
+                        <div class="text-center">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
                                 <div class="text-center">
-                                    <div class="text-white font-bold text-lg">SALE</div>
-                                    <div class="text-white text-xs">تخفيض</div>
+                                    <div class="text-lg font-bold">SALE</div>
+                                    <div class="text-xs">تخفيض</div>
                                 </div>
                             </div>
+                            <button class="w-full bg-white/90 text-red-800 px-6 py-3 rounded-xl font-bold hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                اكتشف العروض
+                            </button>
                         </div>
-                        <button class="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors">
-                            اكتشف العروض
-                        </button>
                     </div>
                 </div>
 
                 <!-- Banner 3: Exclusive Members -->
-                <div class="relative bg-gradient-to-r from-green-100 to-green-200 rounded-2xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl banner-shine">
-                    <div class="p-6 text-center">
-                        <div class="text-right mb-4">
-                            <span class="text-sm text-green-600 font-semibold">الأعضاء الحصرية</span>
+                <div class="relative rounded-3xl overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-2xl h-80">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+                         style="background-image: url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/90 via-green-800/70 to-green-600/50"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10 p-8 h-full flex flex-col justify-between text-white">
+                        <div>
+                            <div class="text-right mb-4">
+                                <span class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold border border-white/30">
+                                    الأعضاء الحصرية
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">بلس</h3>
+                            <p class="text-green-100 mb-6 drop-shadow-md">مزايا حصرية وخدمات متميزة</p>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">بلس</h3>
-                        <p class="text-sm text-gray-600 mb-4">مزايا حصرية للأعضاء</p>
-                        <div class="flex justify-center mb-4">
-                            <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-                                 alt="أعضاء حصرية" 
-                                 class="w-24 h-24 object-cover rounded-lg">
+                        
+                        <div class="text-center">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-crown text-2xl text-yellow-400"></i>
+                            </div>
+                            <button class="w-full bg-white/90 text-green-800 px-6 py-3 rounded-xl font-bold hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                اشترك الآن
+                            </button>
                         </div>
-                        <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors">
-                            اشترك المزيد
-                        </button>
                     </div>
                 </div>
-
-
-                
             </div>
         </div>
     </section>
