@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أرز بسمتي هندي - سوبر ماركت الأسرة</title>
+    <link href="./style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .product-gallery-thumb {
+            transition: all 0.3s ease;
+        }
+        
+        .product-gallery-thumb:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .product-gallery-thumb.active {
+            border: 3px solid #10b981;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+        }
+        
+        .zoom-container {
+            position: relative;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+        
+        .zoom-container:hover .zoom-image {
+            transform: scale(1.3);
+        }
+        
+        .zoom-image {
+            transition: transform 0.3s ease;
+            transform-origin: center;
+        }
+        
+        .rating-stars {
+            color: #fbbf24;
+        }
+        
+        .breadcrumb-link {
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumb-link:hover {
+            color: #10b981;
+        }
+        
+        .product-info-tab {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .product-info-tab.active {
+            color: #10b981;
+            border-bottom-color: #10b981;
+        }
+        
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-cart.hidden {
+            transform: translateX(-50%) translateY(100px);
+            opacity: 0;
+        }
+        
+        @keyframes pulse-green {
+            0%, 100% { background-color: #10b981; }
+            50% { background-color: #059669; }
+        }
+        
+        .pulse-green {
+            animation: pulse-green 2s infinite;
+        }
+        
+        .review-card {
+            transition: all 0.3s ease;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .size-option {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .size-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .size-option.selected {
+            background: linear-gradient(135deg, #10b981, #065f46);
+            color: white;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50"> 
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <!-- Top Bar -->
+        <div class="bg-green-600 text-white py-2 md:py-3 shadow-sm">
+            <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+                <div class="flex flex-row sm:flex-row justify-between items-center gap-2 sm:gap-0 text-xs sm:text-sm">
+                    <!-- Contact Info -->
+                    <div class="flex items-center justify-center sm:justify-start space-x-3 sm:space-x-4 space-x-reverse">
+                        <span class="flex items-center hover:text-green-100 cursor-pointer">
+                            <i class="fas fa-phone ml-1 text-green-200"></i>
+                            <span class="hidden xs:inline">800-123-4567</span>
+                            <span class="xs:hidden">اتصل بنا</span>
+                        </span>
+                        <span class="hidden sm:flex items-center hover:text-green-100 cursor-pointer">
+                            <i class="fas fa-envelope ml-1 text-green-200"></i>
+                            <span class="hidden md:inline">info@supermarket.com</span>
+                            <span class="md:hidden">راسلنا</span>
+                        </span>
+                    </div>
+                    
+                    <!-- Promotion -->
+                    <div class="flex items-center justify-center">
+                        <span class="text-center bg-green-700/30 px-2 py-1 rounded-full border border-green-500/30">
+                            <i class="fas fa-truck ml-1 text-green-200 hidden sm:inline"></i>
+                            <span class="hidden sm:inline font-medium">توصيل مجاني للطلبات فوق 100 ريال</span>
+                            <span class="sm:hidden font-medium">🚚 توصيل مجاني +100 ريال</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-shopping-basket text-green-600 text-3xl ml-3"></i>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-lg mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="ابحث عن المنتجات..." 
+                               class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <button class="absolute left-3 top-2.5 text-gray-400 hover:text-green-600">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-8 space-x-reverse">
+                    <a href="index2.html" class="text-gray-700 hover:text-green-600 font-medium">الرئيسية</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600 font-medium">المنتجات</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600 font-medium">العروض</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600 font-medium">اتصل بنا</a>
+                </div>
+
+                <!-- Cart & Account -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button class="relative p-2 text-gray-700 hover:text-green-600">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </button>
+                    <button class="p-2 text-gray-700 hover:text-green-600">
+                        <i class="fas fa-user text-xl"></i>
+                    </button>
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 hover:text-green-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header> 
+    
+    <!-- Breadcrumb -->
+    <section class="bg-white py-4 border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center space-x-2 space-x-reverse text-sm">
+                <a href="index2.html" class="breadcrumb-link text-gray-500 hover:text-green-600">الرئيسية</a>
+                <i class="fas fa-chevron-left text-gray-400 text-xs"></i>
+                <a href="#" class="breadcrumb-link text-gray-500 hover:text-green-600">خضروات وفواكه</a>
+                <i class="fas fa-chevron-left text-gray-400 text-xs"></i>
+                <span class="text-gray-900 font-medium">أرز بسمتي هندي</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Details Section -->
+    <section class="py-8 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+                
+                <!-- Product Images -->
+                <div class="space-y-4">
+                    <!-- Main Image -->
+                    <div class="zoom-container bg-white rounded-2xl p-4 shadow-lg">
+                        <img id="main-product-image" 
+                             src="./products/1.jpg" 
+                             alt="أرز بسمتي هندي" 
+                             class="zoom-image w-full h-96 object-contain">
+                    </div>
+                    
+                    <!-- Thumbnail Images -->
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="product-gallery-thumb active bg-white rounded-lg p-2 shadow cursor-pointer" 
+                             onclick="changeMainImage('./products/1.jpg', this)">
+                            <img src="./products/1.jpg" alt="صورة 1" class="w-full h-20 object-contain">
+                        </div>
+                        <div class="product-gallery-thumb bg-white rounded-lg p-2 shadow cursor-pointer" 
+                             onclick="changeMainImage('./products/2.jpg', this)">
+                            <img src="./products/2.jpg" alt="صورة 2" class="w-full h-20 object-contain">
+                        </div>
+                        <div class="product-gallery-thumb bg-white rounded-lg p-2 shadow cursor-pointer" 
+                             onclick="changeMainImage('./products/3.jpg', this)">
+                            <img src="./products/3.jpg" alt="صورة 3" class="w-full h-20 object-contain">
+                        </div>
+                        <div class="product-gallery-thumb bg-white rounded-lg p-2 shadow cursor-pointer" 
+                             onclick="changeMainImage('./products/4.jpg', this)">
+                            <img src="./products/4.jpg" alt="صورة 4" class="w-full h-20 object-contain">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="space-y-6">
+                    <!-- Product Title & Rating -->
+                    <div>
+                        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">أرز بسمتي هندي عالي الجودة</h1>
+                        <div class="flex items-center space-x-4 space-x-reverse mb-4">
+                            <div class="flex items-center">
+                                <div class="rating-stars text-lg">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-gray-600 mr-2">4.8</span>
+                            </div>
+                            <span class="text-gray-500">|</span>
+                            <span class="text-gray-600">128 تقييم</span>
+                            <span class="text-gray-500">|</span>
+                            <span class="text-green-600 font-medium">متوفر في المخزن</span>
+                        </div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="bg-gray-50 rounded-2xl p-6">
+                        <div class="flex items-center space-x-4 space-x-reverse mb-4">
+                            <span class="text-3xl md:text-4xl font-bold text-green-600">45 ريال</span>
+                            <span class="text-xl text-gray-500 line-through">56 ريال</span>
+                            <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">خصم 20%</span>
+                        </div>
+                        <div class="flex items-center text-green-600 font-medium">
+                            <i class="fas fa-piggy-bank ml-2"></i>
+                            <span>وفر 11 ريال مع هذا العرض</span>
+                        </div>
+                    </div>
+
+                    <!-- Size Options -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-900 mb-4">اختر الحجم:</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="size-option bg-white border-2 border-gray-200 rounded-xl p-4 text-center" 
+                                 onclick="selectSize(this, '1kg')">
+                                <div class="text-sm font-medium text-gray-700">1 كيلو</div>
+                                <div class="text-xs text-gray-500 mt-1">25 ريال</div>
+                            </div>
+                            <div class="size-option selected bg-white border-2 border-green-500 rounded-xl p-4 text-center" 
+                                 onclick="selectSize(this, '5kg')">
+                                <div class="text-sm font-medium">5 كيلو</div>
+                                <div class="text-xs mt-1">45 ريال</div>
+                            </div>
+                            <div class="size-option bg-white border-2 border-gray-200 rounded-xl p-4 text-center" 
+                                 onclick="selectSize(this, '10kg')">
+                                <div class="text-sm font-medium text-gray-700">10 كيلو</div>
+                                <div class="text-xs text-gray-500 mt-1">85 ريال</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quantity Selector -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-900 mb-4">الكمية:</label>
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <div class="flex items-center border-2 border-gray-300 rounded-xl overflow-hidden">
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-4 py-3 transition-colors" 
+                                        onclick="changeQuantity(-1)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span id="quantity-display" class="px-6 py-3 bg-white text-center min-w-[80px] text-lg font-medium">1</span>
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-4 py-3 transition-colors" 
+                                        onclick="changeQuantity(1)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="text-gray-600">
+                                <span class="text-sm">المتوفر: </span>
+                                <span class="font-medium text-green-600">25 قطعة</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-4">
+                        <button class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl pulse-green">
+                            <i class="fas fa-shopping-cart ml-2"></i>
+                            أضف إلى السلة
+                        </button>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <button class="bg-white border-2 border-green-600 text-green-600 py-3 px-4 rounded-xl font-semibold hover:bg-green-50 transition-all duration-300">
+                                <i class="fas fa-heart ml-2"></i>
+                                المفضلة
+                            </button>
+                            <button class="bg-white border-2 border-gray-300 text-gray-700 py-3 px-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300">
+                                <i class="fas fa-share-alt ml-2"></i>
+                                مشاركة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Features -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">مميزات المنتج</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-truck text-green-500 text-lg ml-3"></i>
+                                <span class="text-gray-700">توصيل مجاني للطلبات فوق 100 ريال</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-shield-alt text-blue-500 text-lg ml-3"></i>
+                                <span class="text-gray-700">ضمان الجودة لمدة 30 يوم</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-orange-500 text-lg ml-3"></i>
+                                <span class="text-gray-700">توصيل خلال 24 ساعة</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-undo text-purple-500 text-lg ml-3"></i>
+                                <span class="text-gray-700">إمكانية الإرجاع خلال 7 أيام</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Information Tabs -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Tab Navigation -->
+            <div class="flex flex-wrap border-b border-gray-200 mb-8">
+                <button class="product-info-tab active px-6 py-4 font-semibold text-lg" onclick="showTab('description')">
+                    الوصف
+                </button>
+                <button class="product-info-tab px-6 py-4 font-semibold text-lg text-gray-600" onclick="showTab('specifications')">
+                    المواصفات
+                </button>
+                <button class="product-info-tab px-6 py-4 font-semibold text-lg text-gray-600" onclick="showTab('reviews')">
+                    التقييمات (128)
+                </button>
+                <button class="product-info-tab px-6 py-4 font-semibold text-lg text-gray-600" onclick="showTab('shipping')">
+                    الشحن والإرجاع
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="tab-content">
+                <!-- Description Tab -->
+                <div id="description" class="tab-content">
+                    <div class="prose prose-lg max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">وصف المنتج</h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            أرز بسمتي هندي عالي الجودة، يتميز بحبوبه الطويلة ونكهته الفريدة وعطره المميز. 
+                            هذا الأرز مثالي لتحضير جميع أنواع الأطباق الآسيوية والعربية التقليدية.
+                        </p>
+                        
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">المميزات:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 mb-6">
+                            <li>حبوب طويلة ونحيفة</li>
+                            <li>عطر طبيعي مميز</li>
+                            <li>سهل الطبخ والهضم</li>
+                            <li>غني بالعناصر الغذائية</li>
+                            <li>خالي من المواد الحافظة</li>
+                        </ul>
+
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">طريقة التحضير:</h4>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                            <li>اغسل الأرز بالماء البارد حتى يصبح الماء صافياً</li>
+                            <li>انقع الأرز في الماء لمدة 30 دقيقة</li>
+                            <li>استخدم نسبة 1:1.5 (أرز:ماء)</li>
+                            <li>اتركه ينضج على نار هادئة لمدة 18-20 دقيقة</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Specifications Tab -->
+                <div id="specifications" class="tab-content hidden">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">مواصفات المنتج</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="flex justify-between border-b pb-2">
+                                <span class="font-semibold text-gray-900">نوع المنتج:</span>
+                                <span class="text-gray-700">أرز بسمتي</span>
+                            </div>
+                            <div class="flex justify-between border-b pb-2">
+                                <span class="font-semibold text-gray-900">المنشأ:</span>
+                                <span class="text-gray-700">الهند</span>
+                            </div>
+                            <div class="flex justify-between border-b pb-2">
+                                <span class="font-semibold text-gray-900">الوزن:</span>
+                                <span class="text-gray-700">5 كيلوجرام</span>
+                            </div>
+                            <div class="flex justify-between border-b pb-2">
+                                <span class="font-semibold text-gray-900">العبوة:</span>
+                                <span class="text-gray-700">كيس بلاستيكي</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between border-b pb-2">
+                                <span class="font-semibold text-gray-900">تاريخ الإنتاج:</span>
+                                <span class="text-gray-700">2024-01-15</span>
+                            </div>
+                            <div class="flex justify-between border-b pb-2">
+                                <span class="font-semibold text-gray-900">تاريخ الانتهاء:</span>
+                                <span class="text-gray-700">2025-01-15</span>
+                            </div>
+                            <div class="flex justify-between border-b pb-2">
+                                <span class="font-semibold text-gray-900">طريقة التخزين:</span>
+                                <span class="text-gray-700">مكان جاف وبارد</span>
+                            </div>
+                            <div class="flex justify-between border-b pb-2">
+                                <span class="font-semibold text-gray-900">الشهادات:</span>
+                                <span class="text-gray-700">ISO 9001, HACCP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div id="reviews" class="tab-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Rating Summary -->
+                        <div class="lg:col-span-1">
+                            <div class="bg-gray-50 rounded-2xl p-6 text-center">
+                                <div class="text-4xl font-bold text-gray-900 mb-2">4.8</div>
+                                <div class="rating-stars text-xl mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="text-gray-600 mb-4">بناءً على 128 تقييم</div>
+                                
+                                <!-- Rating Breakdown -->
+                                <div class="space-y-2">
+                                    <div class="flex items-center">
+                                        <span class="text-sm w-8">5★</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2 mx-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 70%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-600 w-8">70%</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="text-sm w-8">4★</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2 mx-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 20%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-600 w-8">20%</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="text-sm w-8">3★</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2 mx-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 8%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-600 w-8">8%</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="text-sm w-8">2★</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2 mx-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 2%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-600 w-8">2%</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="text-sm w-8">1★</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2 mx-2">
+                                            <div class="bg-yellow-400 h-2 rounded-full" style="width: 0%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-600 w-8">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reviews List -->
+                        <div class="lg:col-span-2 space-y-6">
+                            <!-- Review 1 -->
+                            <div class="review-card bg-white rounded-2xl p-6 shadow-md">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center">
+                                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                            <span class="font-bold text-green-600">أ</span>
+                                        </div>
+                                        <div class="mr-3">
+                                            <div class="font-semibold text-gray-900">أحمد محمد</div>
+                                            <div class="text-sm text-gray-600">منذ أسبوعين</div>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700">
+                                    أرز ممتاز بجودة عالية، الطعم رائع والحبوب طويلة كما هو متوقع. 
+                                    سرعة التوصيل كانت ممتازة والتغليف محكم. أنصح به بشدة.
+                                </p>
+                            </div>
+
+                            <!-- Review 2 -->
+                            <div class="review-card bg-white rounded-2xl p-6 shadow-md">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <span class="font-bold text-blue-600">ف</span>
+                                        </div>
+                                        <div class="mr-3">
+                                            <div class="font-semibold text-gray-900">فاطمة علي</div>
+                                            <div class="text-sm text-gray-600">منذ شهر</div>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700">
+                                    جودة جيدة وسعر مناسب. استخدمته في عدة وصفات وكانت النتيجة ممتازة. 
+                                    العبوة جيدة والأرز نظيف.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Tab -->
+                <div id="shipping" class="tab-content hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">معلومات الشحن</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-truck text-green-500 text-lg mt-1 ml-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">التوصيل المجاني</h4>
+                                        <p class="text-gray-700">للطلبات فوق 100 ريال داخل المدينة</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-clock text-blue-500 text-lg mt-1 ml-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">التوصيل السريع</h4>
+                                        <p class="text-gray-700">خلال 24 ساعة داخل المدينة</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-red-500 text-lg mt-1 ml-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">مناطق التوصيل</h4>
+                                        <p class="text-gray-700">جميع أنحاء المملكة العربية السعودية</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">سياسة الإرجاع</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-undo text-purple-500 text-lg mt-1 ml-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">مدة الإرجاع</h4>
+                                        <p class="text-gray-700">يمكن إرجاع المنتج خلال 7 أيام</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-shield-alt text-green-500 text-lg mt-1 ml-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">ضمان الجودة</h4>
+                                        <p class="text-gray-700">ضمان الجودة لمدة 30 يوم</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-headset text-blue-500 text-lg mt-1 ml-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">خدمة العملاء</h4>
+                                        <p class="text-gray-700">متاحة 24/7 لمساعدتك</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">منتجات مشابهة</h2>
+                <p class="text-xl text-gray-600">قد تعجبك أيضاً</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Similar Product 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+                    <div class="relative">
+                        <img src="./products/2.jpg" alt="زيت زيتون" class="w-full h-48 object-contain group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            جديد
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">زيت زيتون إيطالي</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="rating-stars text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm mr-2">4.9</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-green-600">89 ريال</span>
+                            <button class="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700 transition-colors">
+                                إضافة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similar Product 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+                    <div class="relative">
+                        <img src="./products/3.jpg" alt="لحم بقري" class="w-full h-48 object-contain group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            طازج
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">لحم بقري طازج</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="rating-stars text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm mr-2">4.7</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-green-600">65 ريال</span>
+                            <button class="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700 transition-colors">
+                                إضافة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similar Product 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+                    <div class="relative">
+                        <img src="./products/4.jpg" alt="حليب" class="w-full h-48 object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">حليب كامل الدسم</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="rating-stars text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm mr-2">4.6</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-green-600">12 ريال</span>
+                            <button class="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700 transition-colors">
+                                إضافة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similar Product 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+                    <div class="relative">
+                        <img src="./products/1.jpg" alt="أرز أبيض" class="w-full h-48 object-contain group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                            خصم 15%
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">أرز أبيض مصري</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="rating-stars text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm mr-2">4.5</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <span class="text-xl font-bold text-green-600">35 ريال</span>
+                                <span class="text-sm text-gray-500 line-through">41 ريال</span>
+                            </div>
+                            <button class="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700 transition-colors">
+                                إضافة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Cart Button -->
+    <div class="floating-cart bg-green-600 text-white px-6 py-3 rounded-full shadow-lg">
+        <div class="flex items-center space-x-3 space-x-reverse">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="font-semibold mx-2">إضافة إلى السلة</span>
+            <span class="bg-white text-green-600 px-2 py-1 rounded-full text-sm font-bold">45 ريال</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-shopping-basket text-green-500 text-2xl ml-3"></i>
+                        <h3 class="text-xl font-bold">سوبر ماركت الأسرة</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        نقدم أجود المنتجات الغذائية بأفضل الأسعار لجميع أفراد الأسرة
+                    </p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index2.html" class="text-gray-400 hover:text-white">الرئيسية</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">المنتجات</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">العروض</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">من نحن</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">الفئات</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">خضروات وفواكه</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">اللحوم والدواجن</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">الألبان والأجبان</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">المخبوزات</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">المشروبات</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">تواصل معنا</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-green-500 ml-3"></i>
+                            <span class="text-gray-400">الرياض، المملكة العربية السعودية</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-green-500 ml-3"></i>
+                            <span class="text-gray-400">800-123-4567</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-green-500 ml-3"></i>
+                            <span class="text-gray-400">info@supermarket.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 سوبر ماركت الأسرة. جميع الحقوق محفوظة.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Image Gallery Functions
+        function changeMainImage(newSrc, clickedThumb) {
+            const mainImage = document.getElementById('main-product-image');
+            mainImage.src = newSrc;
+            
+            // Remove active class from all thumbnails
+            document.querySelectorAll('.product-gallery-thumb').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+            // Add active class to clicked thumbnail
+            clickedThumb.classList.add('active');
+        }
+
+        // Size Selection Function
+        function selectSize(selectedOption, size) {
+            // Remove selected class from all options
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            selectedOption.classList.add('selected');
+            
+            // Update price based on size
+            const priceElement = document.querySelector('.text-3xl.font-bold.text-green-600');
+            const prices = {
+                '1kg': '25 ريال',
+                '5kg': '45 ريال',
+                '10kg': '85 ريال'
+            };
+            
+            if (prices[size]) {
+                priceElement.textContent = prices[size];
+            }
+        }
+
+        // Quantity Control
+        let currentQuantity = 1;
+        
+        function changeQuantity(change) {
+            const quantityDisplay = document.getElementById('quantity-display');
+            currentQuantity += change;
+            
+            if (currentQuantity < 1) {
+                currentQuantity = 1;
+            }
+            
+            if (currentQuantity > 25) {
+                currentQuantity = 25;
+            }
+            
+            quantityDisplay.textContent = currentQuantity;
+            
+            // Visual feedback
+            quantityDisplay.style.transform = 'scale(1.2)';
+            quantityDisplay.style.color = '#10b981';
+            
+            setTimeout(() => {
+                quantityDisplay.style.transform = 'scale(1)';
+                quantityDisplay.style.color = '';
+            }, 200);
+        }
+
+        // Tab Navigation
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.product-info-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('text-gray-600');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            event.target.classList.remove('text-gray-600');
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Floating Cart Visibility
+        window.addEventListener('scroll', function() {
+            const floatingCart = document.querySelector('.floating-cart');
+            const productSection = document.querySelector('section');
+            
+            if (window.scrollY > productSection.offsetHeight) {
+                floatingCart.classList.remove('hidden');
+            } else {
+                floatingCart.classList.add('hidden');
+            }
+        });
+
+        // Add to Cart Functions
+        function addToCart() {
+            const button = document.querySelector('.pulse-green');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-check ml-2"></i>تم الإضافة!';
+            button.classList.remove('pulse-green');
+            button.classList.add('bg-green-800');
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.add('pulse-green');
+                button.classList.remove('bg-green-800');
+            }, 2000);
+        }
+
+        // Heart/Wishlist Toggle
+        document.querySelectorAll('.fa-heart').forEach(heart => {
+            heart.addEventListener('click', function() {
+                if (this.classList.contains('far')) {
+                    this.classList.remove('far');
+                    this.classList.add('fas');
+                    this.style.color = '#ef4444';
+                } else {
+                    this.classList.remove('fas');
+                    this.classList.add('far');
+                    this.style.color = '';
+                }
+            });
+        });
+
+        // Product Image Zoom Effect
+        document.querySelector('.zoom-container').addEventListener('mousemove', function(e) {
+            const image = this.querySelector('.zoom-image');
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const xPercent = (x / rect.width) * 100;
+            const yPercent = (y / rect.height) * 100;
+            
+            image.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click event to main add to cart button
+            document.querySelector('.pulse-green').addEventListener('click', addToCart);
+            
+            // Add click event to floating cart button
+            document.querySelector('.floating-cart').addEventListener('click', addToCart);
+            
+            // Initialize floating cart as hidden
+            document.querySelector('.floating-cart').classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
