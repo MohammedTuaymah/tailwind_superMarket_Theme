@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <style>
         /* Essential CSS that can't be easily replaced by Tailwind */
         .hero-gradient {
@@ -30,6 +28,43 @@
                 width: 1rem;
                 height: 1rem;
             }
+        }
+        
+        /* Swiper specific styles */
+        .hero-swiper {
+            width: 100%;
+            height: auto;
+        }
+        
+        .hero-swiper .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-swiper .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Fallback for when Swiper doesn't load */
+        .hero-swiper-fallback {
+            display: none;
+        }
+        
+        .hero-swiper-fallback.active {
+            display: block;
+        }
+        
+        .hero-swiper-fallback img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -205,6 +240,199 @@
                             <path d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z"/>
                         </svg>
                     </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop by Category Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 relative inline-block">
+                    <span class="absolute right-full top-1/2 transform -translate-y-1/2 w-16 h-0.5 bg-green-500 mr-4 hidden md:block"></span>
+                    تسوق حسب الفئة
+                    <span class="absolute left-full top-1/2 transform -translate-y-1/2 w-16 h-0.5 bg-green-500 ml-4 hidden md:block"></span>
+                </h2>
+            </div>
+
+            <!-- Category Carousel -->
+            <div class="relative">
+                <!-- Previous Button -->
+                <button class="category-prev-btn absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-600 hover:text-green-600 hover:bg-green-50 transition-all duration-300 hover:scale-110">
+                    <i class="fas fa-chevron-left text-lg"></i>
+                </button>
+
+                <!-- Next Button -->
+                <button class="category-next-btn absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full w-12 h-12 flex items-center justify-center text-gray-600 hover:text-green-600 hover:bg-green-50 transition-all duration-300 hover:scale-110">
+                    <i class="fas fa-chevron-right text-lg"></i>
+                </button>
+
+                <!-- Swiper Container -->
+                <div class="swiper category-swiper mx-12">
+                    <div class="swiper-wrapper">
+                        <!-- Category 1: Fresh Vegetables -->
+                        <div class="swiper-slide">
+                            <div class="text-center group cursor-pointer">
+                                <div class="relative mb-6">
+                                    <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
+                                        <img src="./market_icons/1.png" 
+                                             alt="خضروات طازجة" 
+                                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                    </div>
+                                    <!-- Plus Icon Overlay -->
+                                    <div class="absolute inset-0 bg-green-600/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-32 h-32 md:w-40 md:h-40 mx-auto">
+                                        <i class="fas fa-plus text-white text-2xl md:text-3xl"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">
+                                    خضروات طازجة
+                                </h3>
+                                <p class="text-gray-600 text-sm md:text-base">
+                                    (30 منتج)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Category 2: Agricultural items -->
+                        <div class="swiper-slide">
+                            <div class="text-center group cursor-pointer">
+                                <div class="relative mb-6">
+                                    <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
+                                        <img src="./market_icons/2.png" 
+                                             alt="منتجات زراعية" 
+                                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                    </div>
+                                    <!-- Plus Icon Overlay -->
+                                    <div class="absolute inset-0 bg-green-600/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-32 h-32 md:w-40 md:h-40 mx-auto">
+                                        <i class="fas fa-plus text-white text-2xl md:text-3xl"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">
+                                    منتجات زراعية
+                                </h3>
+                                <p class="text-gray-600 text-sm md:text-base">
+                                    (70 منتج)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Category 3: Dairy items -->
+                        <div class="swiper-slide">
+                            <div class="text-center group cursor-pointer">
+                                <div class="relative mb-6">
+                                    <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
+                                        <img src="./market_icons/3.png" 
+                                             alt="منتجات الألبان" 
+                                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                    </div>
+                                    <!-- Plus Icon Overlay -->
+                                    <div class="absolute inset-0 bg-green-600/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-32 h-32 md:w-40 md:h-40 mx-auto">
+                                        <i class="fas fa-plus text-white text-2xl md:text-3xl"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">
+                                    منتجات الألبان
+                                </h3>
+                                <p class="text-gray-600 text-sm md:text-base">
+                                    (15 منتج)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Category 4: Frozen items -->
+                        <div class="swiper-slide">
+                            <div class="text-center group cursor-pointer">
+                                <div class="relative mb-6">
+                                    <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
+                                        <img src="./market_icons/4.png" 
+                                             alt="منتجات مجمدة" 
+                                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                    </div>
+                                    <!-- Plus Icon Overlay -->
+                                    <div class="absolute inset-0 bg-green-600/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-32 h-32 md:w-40 md:h-40 mx-auto">
+                                        <i class="fas fa-plus text-white text-2xl md:text-3xl"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">
+                                    منتجات مجمدة
+                                </h3>
+                                <p class="text-gray-600 text-sm md:text-base">
+                                    (30 منتج)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Category 5: Grocery & Frozen -->
+                        <div class="swiper-slide">
+                            <div class="text-center group cursor-pointer">
+                                <div class="relative mb-6">
+                                    <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
+                                        <img src="./market_icons/5.png" 
+                                             alt="بقالة ومجمدات" 
+                                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                    </div>
+                                    <!-- Plus Icon Overlay -->
+                                    <div class="absolute inset-0 bg-green-600/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-32 h-32 md:w-40 md:h-40 mx-auto">
+                                        <i class="fas fa-plus text-white text-2xl md:text-3xl"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">
+                                    بقالة ومجمدات
+                                </h3>
+                                <p class="text-gray-600 text-sm md:text-base">
+                                    (30 منتج)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Category 6: Coffee & Beverages -->
+                        <div class="swiper-slide">
+                            <div class="text-center group cursor-pointer">
+                                <div class="relative mb-6">
+                                    <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
+                                        <img src="./market_icons/6.png" 
+                                             alt="قهوة ومشروبات" 
+                                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                    </div>
+                                    <!-- Plus Icon Overlay -->
+                                    <div class="absolute inset-0 bg-green-600/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-32 h-32 md:w-40 md:h-40 mx-auto">
+                                        <i class="fas fa-plus text-white text-2xl md:text-3xl"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">
+                                    قهوة ومشروبات
+                                </h3>
+                                <p class="text-gray-600 text-sm md:text-base">
+                                    (45 منتج)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Category 7: Beauty & Personal Care -->
+                        <div class="swiper-slide">
+                            <div class="text-center group cursor-pointer">
+                                <div class="relative mb-6">
+                                    <div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
+                                        <img src="./market_icons/7.png" 
+                                             alt="جمال وعناية" 
+                                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                                    </div>
+                                    <!-- Plus Icon Overlay -->
+                                    <div class="absolute inset-0 bg-green-600/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-32 h-32 md:w-40 md:h-40 mx-auto">
+                                        <i class="fas fa-plus text-white text-2xl md:text-3xl"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">
+                                    جمال وعناية
+                                </h3>
+                                <p class="text-gray-600 text-sm md:text-base">
+                                    (25 منتج)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1749,23 +1977,7 @@
             });
         }
 
-        // Initialize Swiper for Hero Banner
-        const heroSwiper = new Swiper('.hero-swiper', {
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: '.hero-next-btn',
-                prevEl: '.hero-prev-btn',
-            },
-            effect: 'slide',
-            speed: 800,
-            autoHeight: true,
-            spaceBetween: 0,
-            slidesPerView: 1,
-        });
+        // Swiper initialization moved to bottom of page for better loading
 
         // Add click handlers for categories
         document.querySelectorAll('.group.cursor-pointer').forEach(category => {
@@ -1927,10 +2139,107 @@
             }, 4000);
         }
           </script>
-  
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Simple Swiper Initialization -->
+    <script>
+        // Simple and reliable Swiper initialization
+        window.addEventListener('load', function() {
+            console.log('Window loaded, initializing Swiper...');
+            
+            // Double check if Swiper is available
+            if (typeof Swiper === 'undefined') {
+                console.error('Swiper not available');
+                return;
+            }
+            
+            // Initialize Swiper
+            const swiper = new Swiper('.hero-swiper', {
+                // Basic settings
+                loop: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.hero-next-btn',
+                    prevEl: '.hero-prev-btn',
+                },
+                
+                // Basic configuration
+                slidesPerView: 1,
+                spaceBetween: 0,
+                speed: 800,
+                
+                // Callbacks
+                on: {
+                    init: function() {
+                        console.log('✅ Swiper initialized successfully!');
+                    },
+                    slideChange: function() {
+                        console.log('Slide changed to:', this.activeIndex);
+                    }
+                }
+            });
+            
+            
+            // Initialize Category Swiper
+            const categorySwiper = new Swiper('.category-swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.category-next-btn',
+                    prevEl: '.category-prev-btn',
+                },
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    480: {
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 40
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 50
+                    },
+                    1280: {
+                        slidesPerView: 4,
+                        spaceBetween: 60
+                    }
+                },
+                grabCursor: true,
+                speed: 600,
+                effect: 'slide',
+                centeredSlides: false,
+                on: {
+                    init: function() {
+                        console.log('✅ Category Swiper initialized successfully!');
+                    },
+                    slideChange: function() {
+                        console.log('Category slide changed to:', this.activeIndex);
+                    }
+                }
+            });
 
-    <!-- Revolutionary Healthy Food Section -->
+            console.log('Swiper object:', swiper);
+            console.log('Category Swiper object:', categorySwiper);
+        });
+    </script>
+
+         <!-- Categories Section -->
 </body>
 </html>
 
