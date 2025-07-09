@@ -1,1322 +1,1936 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>السوبر ماركت - أفضل الأسعار وأجود المنتجات</title>
-  <link href="./style.css" rel="stylesheet">
-  <!-- Swiper.js CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-  <style>
-    body { 
-      font-family: ui-sans-serif, system-ui, sans-serif;
-      background: #f8fafc;
-    }
-    
-    .card-hover:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Swiper custom styles */
-    .daily-offers-swiper .swiper-pagination-bullet {
-      background: #22c55e;
-    }
-    
-    .daily-offers-swiper .swiper-button-next,
-    .daily-offers-swiper .swiper-button-prev {
-      color: #22c55e;
-    }
-    
-    .daily-offers-swiper {
-      padding: 0 20px;
-    }
-    
-    /* 75% width only on small screens */
-    @media (max-width: 639px) {
-      .daily-offers-swiper .swiper-slide {
-        width: 75% !important;
-      }
-    }
-    
-    .product-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
-      transition: all 0.3s ease;
-      height: 320px;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .product-card:hover {
-      transform: translateY(-4px);
-    }
-    
-    .product-image {
-      height: 80%;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      position: relative;
-    }
-    
-    .product-info {
-      height: 20%;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: white;
-    }
-    
-    .product-details {
-      flex: 1;
-    }
-    
-    .product-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: #1f2937;
-      margin: 0 0 4px 0;
-      line-height: 1.2;
-    }
-    
-    .product-price {
-      font-size: 16px;
-      font-weight: 700;
-      color: #059669;
-      margin: 0;
-    }
-    
-    .add-to-cart-btn {
-      width: 36px;
-      height: 36px;
-      background: #22c55e;
-      border: none;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      margin-right: 8px;
-    }
-    
-    .add-to-cart-btn:hover {
-      background: #16a34a;
-      transform: scale(1.1);
-    }
-    
-    .add-to-cart-btn svg {
-      width: 18px;
-      height: 18px;
-      color: white;
-    }
-
-    .discount-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: #ef4444;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-    
-    /* Three Banner Section Styles */
-    .banner-area {
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    }
-    
-    .tpbanner__item {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .tpbanner__content {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .tpbanner__content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
-    }
-    
-    .tpbanner__content:hover::before {
-      left: 100%;
-    }
-    
-    .tpbanner__sub-title {
-      backdrop-filter: blur(4px);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-    
-    .tpbanner__title {
-      font-size: 1.75rem;
-      font-weight: 800;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      line-height: 1.2;
-    }
-    
-    .tpbanner__content p {
-      font-size: 1rem;
-      font-weight: 500;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
-    
-    @media (max-width: 768px) {
-      .tpbanner__content {
-        height: 300px !important;
-      }
-      
-      .tpbanner__title {
-        font-size: 1.5rem;
-      }
-      
-      .tpbanner__content p {
-        font-size: 0.9rem;
-      }
-    }
-    
-    /* Responsive for mobile */
-    @media (max-width: 640px) {
-      .banner-area .grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      
-      .tpbanner__content {
-        height: 250px !important;
-      }
-    }
-    
-    /* Additional banner effects */
-    .tpbanner__item:hover .tpbanner__content {
-      transform: translateY(-4px);
-    }
-    
-    .tpbanner__content {
-      transition: all 0.3s ease;
-      border: 2px solid rgba(255,255,255,0.1);
-    }
-    
-    .tpbanner__content:hover {
-      border-color: rgba(255,255,255,0.3);
-    }
-    
-    /* Pulse animation for emphasis */
-    .tpbanner__sub-title {
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.8; }
-    }
-    
-    /* Gradient overlays for better text readability */
-    .tpbanner__content::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
-      pointer-events: none;
-    }
-    
-    /* Better hover effects */
-    .tpbanner__item:hover .tpbanner__title {
-      transform: translateY(-2px);
-      transition: transform 0.3s ease;
-    }
-    
-    .tpbanner__item:hover .tpbanner__sub-title {
-      transform: scale(1.05);
-      transition: transform 0.3s ease;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوبر ماركت الأسرة - أجود المنتجات بأفضل الأسعار</title>
+    <link href="./style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        /* Essential CSS that can't be easily replaced by Tailwind */
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        /* Essential responsive adjustments for Swiper */
+        @media (max-width: 768px) {
+            .hero-prev-btn,
+            .hero-next-btn {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+            
+            .hero-prev-btn svg,
+            .hero-next-btn svg {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+    </style>
 </head>
+  <body class="cairo-font">
 
 
 
-<body>
-  <!-- Header -->
-  <header class="bg-white shadow-md sticky top-0 z-50">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
+
+
+
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-indicator" class="scroll-indicator"></div>
+   
+   
+   
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+
         
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-          <div class="bg-green-500 text-white px-4 py-2 rounded-lg">
-            <h1 class="text-xl font-bold">🛒 السوبر ماركت</h1>
-          </div>
-        </div>
-
-        <!-- Desktop Navigation -->
-        <div class="hidden lg:flex items-center space-x-8 space-x-reverse">
-          <a href="#home" class="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md font-medium transition-colors">الرئيسية</a>
-          <a href="#about" class="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md font-medium transition-colors">من نحن</a>
-          <a href="#products" class="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md font-medium transition-colors">المنتجات</a>
-          <a href="#services" class="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md font-medium transition-colors">الخدمات</a>
-          <a href="#offers" class="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md font-medium transition-colors">العروض</a>
-          <a href="#contact" class="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md font-medium transition-colors">تواصل معنا</a>
-        </div>
-
-        <!-- CTA Button & Mobile Menu Button -->
-        <div class="flex items-center space-x-4 space-x-reverse">
-          <!-- CTA Button -->
-          <a href="#signup" class="hidden sm:inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-colors">
-            ابدأ التسوق
-          </a>
-
-          <!-- Shopping Cart Icon -->
-          <button class="relative p-2 text-gray-700 hover:text-green-600 transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
-            </svg>
-            <span class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">3</span>
-          </button>
-
-          <!-- Mobile Menu Button -->
-          <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-100 transition-colors">
-            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Mobile Menu Overlay -->
-  <div id="mobile-menu-overlay" class="lg:hidden fixed inset-0 z-40 hidden">
-    <!-- Backdrop -->
-    <div class="absolute inset-0 bg-black bg-opacity-50" id="backdrop"></div>
-    
-    <!-- Mobile Menu Container -->
-    <div id="mobile-menu" class="absolute top-0 right-0 h-full w-80 max-w-sm bg-white shadow-lg transform translate-x-full transition-transform duration-300">
-      <div class="h-full overflow-y-auto">
-        <!-- Header -->
-        <div class="px-6 py-4 bg-green-500 text-white">
-          <div class="flex items-center justify-between">
-            <h2 class="text-xl font-bold">القائمة</h2>
-            <button id="close-menu-btn" class="p-2 text-white hover:bg-green-600 rounded-md transition-colors">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Search Bar -->
-        <div class="px-6 py-4 border-b">
-          <input type="text" placeholder="ابحث عن المنتجات..." class="w-full px-3 py-2 border border-gray-300 rounded-md focus:border-green-500 focus:ring-1 focus:ring-green-500 text-right">
-        </div>
-
-        <!-- Navigation Links -->
-        <div class="px-6 py-4 space-y-2">
-          <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-gray-100 rounded-md transition-colors mobile-menu-link">الرئيسية</a>
-          <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-gray-100 rounded-md transition-colors mobile-menu-link">من نحن</a>
-          <a href="#products" class="block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-gray-100 rounded-md transition-colors mobile-menu-link">المنتجات</a>
-          <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-gray-100 rounded-md transition-colors mobile-menu-link">الخدمات</a>
-          <a href="#offers" class="block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-gray-100 rounded-md transition-colors mobile-menu-link">العروض</a>
-          <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-gray-100 rounded-md transition-colors mobile-menu-link">تواصل معنا</a>
-        </div>
-
-        <!-- CTA Section -->
-        <div class="px-6 py-4 border-t">
-          <a href="#signup" class="block w-full text-center px-4 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-colors">
-            ابدأ التسوق الآن
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <main>
-
-
-
-
-    <!-- Hero Section -->
-    <section id="home" class="relative h-[90vh] min-h-[500px] overflow-hidden">
-      <!-- Background Image -->
-      <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10"></div>
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('./gentle_banner_1920-1080.gif');">
-      </div>
-      
-      <!-- Content -->
-      <div class="relative z-20 h-full flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Text Content -->
-            <div class="text-white text-center lg:text-right">
-              <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                السوبر ماركت
-                <span class="block text-green-400">الأفضل</span>
-              </h1>
-              <p class="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">
-                أفضل الأسعار وأجود المنتجات الطازجة<br>
-                مع خدمة توصيل سريعة إلى باب منزلك
-              </p>
-              <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button class="px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
-                  🛒 ابدأ التسوق الآن
-                </button>
-                <button class="px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 text-white font-medium text-lg rounded-xl transition-all duration-300">
-                  📱 حمل التطبيق
-                </button>
-              </div>
+        <!-- Top Bar -->
+        <div class="bg-green-600 text-white py-2 md:py-3 shadow-sm">
+            <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+                <div class="flex flex-row sm:flex-row justify-between items-center gap-2 sm:gap-0 text-xs sm:text-sm top-bar-mobile">
+                    <!-- Contact Info -->
+                    <div class="flex items-center justify-center sm:justify-start space-x-3 sm:space-x-4 space-x-reverse">
+                        <span class="flex items-center top-bar-text hover:text-green-100 cursor-pointer">
+                            <i class="fas fa-phone ml-1 text-green-200 transition-colors duration-300"></i>
+                            <span class="hidden xs:inline">800-123-4567</span>
+                            <span class="xs:hidden">اتصل بنا</span>
+                        </span>
+                        <span class="hidden sm:flex items-center top-bar-text hover:text-green-100 cursor-pointer">
+                            <i class="fas fa-envelope ml-1 text-green-200 transition-colors duration-300"></i>
+                            <span class="hidden md:inline">info@supermarket.com</span>
+                            <span class="md:hidden">راسلنا</span>
+                        </span>
+                    </div>
+                    
+                    <!-- Promotion -->
+                    <div class="flex items-center justify-center">
+                        <span class="text-center top-bar-text bg-green-700/30 px-2 py-1 rounded-full border border-green-500/30">
+                            <i class="fas fa-truck ml-1 text-green-200 hidden sm:inline transition-transform duration-300 hover:scale-110"></i>
+                            <span class="hidden sm:inline font-medium">توصيل مجاني للطلبات فوق 100 ريال</span>
+                            <span class="sm:hidden font-medium">🚚 توصيل مجاني +100 ريال</span>
+                        </span>
+                    </div>
+                </div>
             </div>
-            
-            
-          </div>
-          
-          
         </div>
-      </div>
-      
-      <!-- Scroll Indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div class="animate-bounce">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
-      </div>
-    </section>
 
-    <!-- New Three Banner Section -->
-    <section class="banner-area py-16 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          <!-- Green Banner: TOP OFFERS -->
-          <div class="tpbanner__item">
-            <a href="#shop" class="block group">
-              <div class="tpbanner__content relative h-80 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&w=800&h=600&q=80')"></div>
-                <div class="relative z-10 p-8 flex flex-col justify-center h-full text-white">
-                  <span class="tpbanner__sub-title text-sm font-semibold mb-4 bg-white bg-opacity-20 px-3 py-1 rounded-full inline-block w-fit">TOP OFFERS</span>
-                  <h4 class="tpbanner__title text-2xl font-bold mb-6 leading-tight">
-                    Eat Green<br>
-                    Best For Family
-                  </h4>
-                  <p class="text-lg font-medium">Free Shipping 05km</p>
+        <!-- Main Navigation -->
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-shopping-basket text-green-600 text-3xl ml-3"></i>
+                    </div>
                 </div>
-              </div>
-            </a>
-          </div>
-          
-          <!-- Orange Banner: WEEKEND DEALS -->
-          <div class="tpbanner__item">
-            <a href="#shop" class="block group">
-              <div class="tpbanner__content relative h-80 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&h=600&q=80')"></div>
-                <div class="relative z-10 p-8 flex flex-col justify-center h-full text-white">
-                  <span class="tpbanner__sub-title text-sm font-semibold mb-4 bg-white bg-opacity-20 px-3 py-1 rounded-full inline-block w-fit">WEEKEND DEALS</span>
-                  <h4 class="tpbanner__title text-2xl font-bold mb-6 leading-tight">
-                    Fresh Food<br>
-                    Restore Health
-                  </h4>
-                  <p class="text-lg font-medium">Top Quality Products</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          
-          <!-- Red Banner: TOP SELLER -->
-          <div class="tpbanner__item">
-            <a href="#shop" class="block group">
-              <div class="tpbanner__content relative h-80 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&h=600&q=80')"></div>
-                <div class="relative z-10 p-8 flex flex-col justify-center h-full text-white">
-                  <span class="tpbanner__sub-title text-sm font-semibold mb-4 bg-white bg-opacity-20 px-3 py-1 rounded-full inline-block w-fit">TOP SELLER</span>
-                  <h4 class="tpbanner__title text-2xl font-bold mb-6 leading-tight">
-                    Healthy<br>
-                    Fresh Free Bread
-                  </h4>
-                  <p class="text-lg font-medium">Limited Time: Online Only!</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          
-        </div>
-      </div>
-    </section>
 
-    <!-- Banners Section -->
-    <section class="py-8 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          
-          <!-- Banner 1 -->
-          <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img src="./banner1.jpg" alt="Banner 1" class="w-full h-64 md:h-80 object-cover">
-          </div>
-          
-          <!-- Banner 2 -->
-          <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img src="./banner2.jpg" alt="Banner 2" class="w-full h-64 md:h-80 object-cover">
-          </div>
-          
-        </div>
-      </div>
-    </section>
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-lg mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="ابحث عن المنتجات..." 
+                               class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <button class="absolute left-3 top-2.5 text-gray-400 hover:text-green-600">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
 
-    <!-- Features Section -->
-    <section id="features" class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            لماذا نحن الأفضل؟
-          </h2>
-          <p class="text-lg text-gray-600">
-            نقدم لك تجربة تسوق فريدة مع أفضل الخدمات والمنتجات
-          </p>
-        </div>
+                <!-- Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-8 space-x-reverse">
+                    <a href="#" class="nav-link text-gray-700 hover:text-green-600 font-medium">الرئيسية</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-green-600 font-medium">المنتجات</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-green-600 font-medium">العروض</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-green-600 font-medium">اتصل بنا</a>
+                </div>
+
+                <!-- Cart & Account -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button class="relative p-2 text-gray-700 hover:text-green-600">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </button>
+                    <button class="p-2 text-gray-700 hover:text-green-600">
+                        <i class="fas fa-user text-xl"></i>
+                    </button>
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 hover:text-green-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="text-center p-6 rounded-lg bg-gray-50 card-hover transition-all duration-300">
-            <div class="w-16 h-16 mx-auto mb-4 bg-green-500 rounded-lg flex items-center justify-center text-3xl">
-              🚚
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="text-gray-700 hover:text-green-600 font-medium py-2">الرئيسية</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600 font-medium py-2">المنتجات</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600 font-medium py-2">العروض</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600 font-medium py-2">اتصل بنا</a>
+                </div>
             </div>
-            <h3 class="text-xl font-bold mb-2 text-gray-900">توصيل سريع</h3>
-            <p class="text-gray-600">توصيل مجاني خلال 24 ساعة إلى باب منزلك</p>
-          </div>
-          
-          <div class="text-center p-6 rounded-lg bg-gray-50 card-hover transition-all duration-300">
-            <div class="w-16 h-16 mx-auto mb-4 bg-blue-500 rounded-lg flex items-center justify-center text-3xl">
-              💰
-            </div>
-            <h3 class="text-xl font-bold mb-2 text-gray-900">أسعار منافسة</h3>
-            <p class="text-gray-600">أفضل الأسعار في السوق مع عروض حصرية</p>
-          </div>
-          
-          <div class="text-center p-6 rounded-lg bg-gray-50 card-hover transition-all duration-300">
-            <div class="w-16 h-16 mx-auto mb-4 bg-purple-500 rounded-lg flex items-center justify-center text-3xl">
-              ⭐
-            </div>
-            <h3 class="text-xl font-bold mb-2 text-gray-900">جودة عالية</h3>
-            <p class="text-gray-600">منتجات طازجة وعالية الجودة من أفضل الموردين</p>
-          </div>
         </div>
-      </div>
-    </section>
+        </header>
 
-    <!-- Products Section -->
-    <section id="products" class="py-16 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            أقسام المنتجات
-          </h2>
-          <p class="text-lg text-gray-600">
-            اكتشف مجموعة واسعة من المنتجات عالية الجودة
-          </p>
-        </div>
+
+
         
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-          <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover transition-all duration-300">
-            <div class="text-4xl mb-3">🥬</div>
-            <h3 class="font-bold text-gray-900">خضار وفواكه</h3>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover transition-all duration-300">
-            <div class="text-4xl mb-3">🥛</div>
-            <h3 class="font-bold text-gray-900">منتجات الألبان</h3>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover transition-all duration-300">
-            <div class="text-4xl mb-3">🍞</div>
-            <h3 class="font-bold text-gray-900">المخبوزات</h3>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover transition-all duration-300">
-            <div class="text-4xl mb-3">🥩</div>
-            <h3 class="font-bold text-gray-900">اللحوم والدواجن</h3>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover transition-all duration-300">
-            <div class="text-4xl mb-3">🧴</div>
-            <h3 class="font-bold text-gray-900">منظفات ومستلزمات</h3>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover transition-all duration-300">
-            <div class="text-4xl mb-3">🍪</div>
-            <h3 class="font-bold text-gray-900">وجبات خفيفة</h3>
-          </div>
+    <!-- Main Hero Banner with Swiper -->
+    <section class="py-4 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="heroBannerSliderWrapper flex flex-row justify-center lg:gap-1 sm:px-0">
+                <div class="relative w-full rounded-xl shadow-md border-white border-2 overflow-hidden">
+                    <!-- Previous Button -->
+                    <button class="absolute left-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-5 h-5 sm:w-10 sm:h-10 bg-green-600 rounded-full shadow-md text-white hover:bg-green-700 transition-colors hero-prev-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6l6 6z"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Swiper -->
+                    <div class="swiper hero-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide">
+                                <img class="cursor-pointer w-full aspect-[calc(6)/2] md:aspect-[calc(975)/200] object-cover" 
+                                     alt="عروض سوبر ماركت الأسرة" 
+                                     src="./superMarket/1.jpg" 
+                                     style="background-color: rgb(255, 255, 255);">
+                            </div>
+                            
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide">
+                                <img class="cursor-pointer w-full aspect-[calc(6)/2] md:aspect-[calc(975)/200] object-cover" 
+                                     alt="منتجات طازجة يومياً" 
+                                     src="./superMarket/2.jpg" 
+                                     style="background-color: rgb(255, 255, 255);">
+                            </div>
+                            
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide">
+                                <img class="cursor-pointer w-full aspect-[calc(6)/2] md:aspect-[calc(975)/200] object-cover" 
+                                     alt="توصيل سريع" 
+                                     src="./superMarket/3.jpg" 
+                                     style="background-color: rgb(255, 255, 255);">
+                            </div>
+                            
+                            <!-- Slide 4 -->
+                            <div class="swiper-slide">
+                                <img class="cursor-pointer w-full aspect-[calc(6)/2] md:aspect-[calc(975)/200] object-cover" 
+                                     alt="عروض حصرية" 
+                                     src="./superMarket/4.jpg" 
+                                     style="background-color: rgb(255, 255, 255);">
+                            </div>
+                            
+                            <!-- Slide 5 -->
+                            <div class="swiper-slide">
+                                <img class="cursor-pointer w-full aspect-[calc(6)/2] md:aspect-[calc(975)/200] object-cover" 
+                                     alt="جودة عالية" 
+                                     src="./superMarket/5.jpg" 
+                                     style="background-color: rgb(255, 255, 255);">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Next Button -->
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-5 h-5 sm:w-10 sm:h-10 bg-green-600 rounded-full shadow-md text-white hover:bg-green-700 transition-colors hero-next-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Daily Offers Section -->
+         <!-- Categories Section -->
+     <section class="py-20 relative overflow-hidden bg-white">
+
+         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+             
+             <!-- Categories Grid -->
+             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-12">
+                 <!-- Category 1: خضروات وفواكه -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <!-- Background Gradient -->
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <!-- Content -->
+                         <div class="relative z-10 flex flex-col items-center">
+                             <!-- Icon Container -->
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/1.png" alt="خضروات وفواكه" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <!-- Floating Elements -->
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <!-- Title -->
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 خضروات وفواكه
+                             </h3>
+                             
+                             <!-- Product Count -->
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">250+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <!-- Bottom Bar -->
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <!-- Hover Effects -->
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+                 
+                 <!-- Category 2: اللحوم والدواجن -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <div class="relative z-10 flex flex-col items-center">
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/2.png" alt="اللحوم والدواجن" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 اللحوم والدواجن
+                             </h3>
+                             
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">85+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+                 
+                 <!-- Category 3: منتجات القهوة -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <div class="relative z-10 flex flex-col items-center">
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/3.png" alt="منتجات القهوة" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 منتجات القهوة
+                             </h3>
+                             
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">120+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+                 
+                 <!-- Category 4: البروتين -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <div class="relative z-10 flex flex-col items-center">
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/4.png" alt="البروتين" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 البروتين
+                             </h3>
+                             
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">95+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+                 
+                 <!-- Category 5: المكياج -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <div class="relative z-10 flex flex-col items-center">
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/5.png" alt="المكياج" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 المكياج
+                             </h3>
+                             
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">180+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+                 
+                 <!-- Category 6: الصيدلة -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <div class="relative z-10 flex flex-col items-center">
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/6.png" alt="الصيدلة" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 الصيدلة
+                             </h3>
+                             
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">140+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+                 
+                 <!-- Category 7: العصيرات -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <div class="relative z-10 flex flex-col items-center">
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/7.png" alt="العصيرات" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 العصيرات
+                             </h3>
+                             
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">75+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+                 
+                 <!-- Category 8: المشروبات الغازية -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <div class="relative z-10 flex flex-col items-center">
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/8.png" alt="المشروبات الغازية" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 المشروبات الغازية
+                             </h3>
+                             
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">60+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+                 
+                 <!-- Category 9: الصيدلة الثانية -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <div class="relative z-10 flex flex-col items-center">
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/9.png" alt="الصيدلة" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 الصيدلة
+                             </h3>
+                             
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">110+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+                 
+                 <!-- Category 10: الالكترونيات -->
+                 <div class="group cursor-pointer">
+                     <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/20">
+                         <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 via-emerald-50/50 to-teal-100/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                         <div class="relative z-10 flex flex-col items-center">
+                             <div class="relative mb-4">
+                                 <div class="w-24 h-24 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3">
+                                     <img src="./market_icons/11.png" alt="الالكترونيات" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300">
+                                 </div>
+                                 <div class="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-green-300 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200"></div>
+                             </div>
+                             
+                             <h3 class="text-lg font-bold text-gray-800 text-center mb-2 group-hover:text-green-700 transition-colors duration-300">
+                                 الالكترونيات
+                             </h3>
+                             
+                             <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                 <span class="text-sm text-gray-600 font-medium">45+ منتج</span>
+                                 <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                             </div>
+                             
+                             <div class="w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                         </div>
+                         
+                         <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 via-emerald-500/10 to-teal-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     </div>
+                 </div>
+             </div>
+             
+             
+         </div>
+     </section>
+
+
+
+
+    <!-- Category Banner Section -->
     <section class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            العروض اليومية
-          </h2>
-          <p class="text-lg text-gray-600">
-            اكتشف أفضل العروض والخصومات اليومية على منتجاتنا المختارة
-          </p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                
+
+                <!-- Column 2: Meat Banner -->
+                <div class="relative rounded-2xl overflow-hidden shadow-lg h-auto cursor-pointer group">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./banners/meat.jpg');">
+                    </div>
+                    <div class="absolute inset-0"></div>
+                    
+                    <div class="relative z-10 p-6 h-full flex flex-col justify-between text-white">
+                        <div class="text-right">
+                            <h2 class="text-3xl font-bold mb-2">اللحوم</h2>
+                            <h3 class="text-xl mb-4">طازجة وطبيعية</h3>
+                            <p class="text-sm text-green-100">
+                                <button class="bg-white/90 text-green-800 px-6 py-2 rounded-lg font-bold hover:bg-white transition-colors text-sm">
+                                    تسوق الآن
+                                </button>
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Column 1: Best Seller Products -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">الأكثر مبيعاً</h2>
+                    
+                    <div class="space-y-4">
+
+                        <!-- Product 1 -->
+                        <div class="flex items-center border-b border-gray-200 pb-4 space-x-4 space-x-reverse p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                            <div class="flex-shrink-0">
+                                <img src="./products/1.jpg" alt="أرز بسمتي" class="w-16 h-16 object-cover rounded-lg group-hover:scale-105 transition-transform">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-semibold text-gray-900 truncate group-hover:text-green-600 transition-colors">أرز بسمتي هندي</h3>
+                                <div class="flex items-center mt-1">
+                                    <div class="flex items-center">
+                                        <span class="text-yellow-400 text-sm">★★★★</span>
+                                        <span class="text-gray-300 text-sm">☆</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center mt-2 space-x-2 space-x-reverse">
+                                    <span class="text-green-600 font-bold text-sm">45 ريال</span>
+                                    <span class="text-gray-400 line-through text-xs">56 ريال</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="flex items-center border-b border-gray-200 pb-4 space-x-4 space-x-reverse p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                            <div class="flex-shrink-0">
+                                <img src="./products/2.jpg" alt="زيت زيتون" class="w-16 h-16 object-cover rounded-lg group-hover:scale-105 transition-transform">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-semibold text-gray-900 truncate group-hover:text-green-600 transition-colors">زيت زيتون إيطالي</h3>
+                                <div class="flex items-center mt-1">
+                                    <div class="flex items-center">
+                                        <span class="text-yellow-400 text-sm">★★★★</span>
+                                        <span class="text-gray-300 text-sm">☆</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-green-600 font-bold text-sm">89 ريال</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="flex items-center border-b border-gray-200 pb-4 space-x-4 space-x-reverse p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                            <div class="flex-shrink-0">
+                                <img src="./products/3.jpg" alt="لحم بقري" class="w-16 h-16 object-cover rounded-lg group-hover:scale-105 transition-transform">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-semibold text-gray-900 truncate group-hover:text-green-600 transition-colors">لحم بقري طازج</h3>
+                                <div class="flex items-center mt-1">
+                                    <div class="flex items-center">
+                                        <span class="text-yellow-400 text-sm">★★★</span>
+                                        <span class="text-gray-300 text-sm">☆☆</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-green-600 font-bold text-sm">65 ريال</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View More Button -->
+                    <div class="mt-6 text-center">
+                        <button class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors font-medium text-sm">
+                            <span>عرض المزيد</span>
+                            <i class="fas fa-angle-double-left mr-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Column 4: Coffee Banner -->
+                <div class="relative rounded-2xl overflow-hidden shadow-lg h-auto cursor-pointer group">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./banners/coffee.jpg');">
+                    </div>
+                    <div class="absolute inset-0"></div>
+                    
+                    <div class="relative z-10 p-6 h-full flex flex-col justify-between text-white">
+                        <div class="text-right">
+                            <h2 class="text-2xl font-bold mb-2 leading-tight">
+                                قهوة طازجة<br>
+                                مميزة
+                            </h2>
+                            <button class="bg-white/90 text-amber-800 px-6 py-2 rounded-lg font-bold hover:bg-white transition-colors text-sm">
+                                <span>تسوق الآن</span>
+                                <i class="fas fa-angle-double-left mr-2"></i>
+                            </button>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+
+                <!-- Column 3: Top Rated Products -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">الأعلى تقييماً</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Product 1 -->
+                        <div class="flex items-center border-b border-gray-200 pb-4 space-x-4 space-x-reverse p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                            <div class="flex-shrink-0">
+                                <img src="./products/1.jpg" alt="أرز بسمتي" class="w-16 h-16 object-cover rounded-lg group-hover:scale-105 transition-transform">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-semibold text-gray-900 truncate group-hover:text-green-600 transition-colors">أرز بسمتي هندي</h3>
+                                <div class="flex items-center mt-1">
+                                    <div class="flex items-center">
+                                        <span class="text-yellow-400 text-sm">★★★★★</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center mt-2 space-x-2 space-x-reverse">
+                                    <span class="text-green-600 font-bold text-sm">45 ريال</span>
+                                    <span class="text-gray-400 line-through text-xs">56 ريال</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="flex items-center border-b border-gray-200 pb-4 space-x-4 space-x-reverse p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                            <div class="flex-shrink-0">
+                                <img src="./products/2.jpg" alt="زيت زيتون" class="w-16 h-16 object-cover rounded-lg group-hover:scale-105 transition-transform">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-semibold text-gray-900 truncate group-hover:text-green-600 transition-colors">زيت زيتون إيطالي</h3>
+                                <div class="flex items-center mt-1">
+                                    <div class="flex items-center">
+                                        <span class="text-yellow-400 text-sm">★★★★★</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-green-600 font-bold text-sm">89 ريال</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="flex items-center border-b border-gray-200 pb-4 space-x-4 space-x-reverse p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                            <div class="flex-shrink-0">
+                                <img src="./products/4.jpg" alt="حليب" class="w-16 h-16 object-cover rounded-lg group-hover:scale-105 transition-transform">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-semibold text-gray-900 truncate group-hover:text-green-600 transition-colors">حليب كامل الدسم</h3>
+                                <div class="flex items-center mt-1">
+                                    <div class="flex items-center">
+                                        <span class="text-yellow-400 text-sm">★★★★</span>
+                                        <span class="text-gray-300 text-sm">☆</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-green-600 font-bold text-sm">12 ريال</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View More Button -->
+                    <div class="mt-6 text-center">
+                        <button class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors font-medium text-sm">
+                            <span>عرض المزيد</span>
+                            <i class="fas fa-angle-double-left mr-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            
         </div>
-        
-        <!-- Swiper Container -->
-        <div class="swiper daily-offers-swiper">
-          <div class="swiper-wrapper">
-            <!-- Product 1 -->
-            <div class="swiper-slide">
-              <div class="product-card">
-                <div class="product-image">
-                  🍎
-                  <div class="discount-badge">25% خصم</div>
-                </div>
-                <div class="product-info">
-                  <div class="product-details">
-                    <h3 class="product-name">تفاح أحمر طازج</h3>
-                    <p class="product-price">15 ريال</p>
-                  </div>
-                  <button class="add-to-cart-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Product 2 -->
-            <div class="swiper-slide">
-              <div class="product-card">
-                <div class="product-image">
-                  🥛
-                  <div class="discount-badge">33% خصم</div>
-                </div>
-                <div class="product-info">
-                  <div class="product-details">
-                    <h3 class="product-name">حليب طازج</h3>
-                    <p class="product-price">8 ريال</p>
-                  </div>
-                  <button class="add-to-cart-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Product 3 -->
-            <div class="swiper-slide">
-              <div class="product-card">
-                <div class="product-image">
-                  🍞
-                  <div class="discount-badge">40% خصم</div>
-                </div>
-                <div class="product-info">
-                  <div class="product-details">
-                    <h3 class="product-name">خبز طازج</h3>
-                    <p class="product-price">3 ريال</p>
-                  </div>
-                  <button class="add-to-cart-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Product 4 -->
-            <div class="swiper-slide">
-              <div class="product-card">
-                <div class="product-image">
-                  🧀
-                  <div class="discount-badge">17% خصم</div>
-                </div>
-                <div class="product-info">
-                  <div class="product-details">
-                    <h3 class="product-name">جبن أبيض</h3>
-                    <p class="product-price">25 ريال</p>
-                  </div>
-                  <button class="add-to-cart-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Product 5 -->
-            <div class="swiper-slide">
-              <div class="product-card">
-                <div class="product-image">
-                  🍌
-                  <div class="discount-badge">33% خصم</div>
-                </div>
-                <div class="product-info">
-                  <div class="product-details">
-                    <h3 class="product-name">موز طازج</h3>
-                    <p class="product-price">10 ريال</p>
-                  </div>
-                  <button class="add-to-cart-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Product 6 -->
-            <div class="swiper-slide">
-              <div class="product-card">
-                <div class="product-image">
-                  🥩
-                  <div class="discount-badge">25% خصم</div>
-                </div>
-                <div class="product-info">
-                  <div class="product-details">
-                    <h3 class="product-name">لحم بقري طازج</h3>
-                    <p class="product-price">45 ريال</p>
-                  </div>
-                  <button class="add-to-cart-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Product 7 -->
-            <div class="swiper-slide">
-              <div class="product-card">
-                <div class="product-image">
-                  🥕
-                  <div class="discount-badge">38% خصم</div>
-                </div>
-                <div class="product-info">
-                  <div class="product-details">
-                    <h3 class="product-name">جزر طازج</h3>
-                    <p class="product-price">5 ريال</p>
-                  </div>
-                  <button class="add-to-cart-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Product 8 -->
-            <div class="swiper-slide">
-              <div class="product-card">
-                <div class="product-image">
-                  🍗
-                  <div class="discount-badge">29% خصم</div>
-                </div>
-                <div class="product-info">
-                  <div class="product-details">
-                    <h3 class="product-name">دجاج طازج</h3>
-                    <p class="product-price">20 ريال</p>
-                  </div>
-                  <button class="add-to-cart-btn">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H17M9 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Navigation buttons -->
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          
-          <!-- Pagination -->
-          <!-- <div class="swiper-pagination"></div> -->
-        </div>
-      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            من نحن
-          </h2>
-          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            نحن السوبر ماركت الرائد في المنطقة، نسعى لتقديم أفضل تجربة تسوق لعملائنا الكرام. 
-            منذ تأسيسنا ونحن نلتزم بتوفير أجود المنتجات بأفضل الأسعار مع خدمة عملاء متميزة.
-          </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">رؤيتنا</h3>
-            <p class="text-gray-600 mb-6">
-              أن نكون الخيار الأول للعائلات في المنطقة لتلبية جميع احتياجاتهم اليومية 
-              من خلال تقديم منتجات عالية الجودة وخدمة متميزة.
-            </p>
-            
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">قيمنا</h3>
-            <ul class="space-y-3 text-gray-600">
-              <li class="flex items-center">
-                <span class="text-green-500 mr-2">✓</span>
-                الجودة والطزاجة في جميع منتجاتنا
-              </li>
-              <li class="flex items-center">
-                <span class="text-green-500 mr-2">✓</span>
-                أسعار عادلة ومنافسة
-              </li>
-              <li class="flex items-center">
-                <span class="text-green-500 mr-2">✓</span>
-                خدمة عملاء متميزة
-              </li>
-              <li class="flex items-center">
-                <span class="text-green-500 mr-2">✓</span>
-                مسؤولية اجتماعية تجاه المجتمع
-              </li>
-            </ul>
-          </div>
-          
-          <div class="bg-gray-100 p-8 rounded-lg">
-            <h3 class="text-xl font-bold text-gray-900 mb-6">إحصائياتنا</h3>
-            <div class="grid grid-cols-2 gap-6">
-              <div class="text-center">
-                <div class="text-3xl font-bold text-green-600 mb-2">500+</div>
-                <div class="text-gray-600">منتج متنوع</div>
-              </div>
-              <div class="text-center">
-                <div class="text-3xl font-bold text-blue-600 mb-2">50K+</div>
-                <div class="text-gray-600">عميل راضي</div>
-              </div>
-              <div class="text-center">
-                <div class="text-3xl font-bold text-purple-600 mb-2">24/7</div>
-                <div class="text-gray-600">خدمة العملاء</div>
-              </div>
-              <div class="text-center">
-                <div class="text-3xl font-bold text-orange-500 mb-2">10+</div>
-                <div class="text-gray-600">سنوات خبرة</div>
-              </div>
+
+
+     
+
+    <!-- Three Promotional Banners -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Banner 1: Magazine Offers -->
+                <div class="relative rounded-3xl overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-2xl h-80">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+                         style="background-image: url('./vegetable/1.jpg');">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10 p-8 h-full flex flex-col justify-between text-white">
+                        <div>
+                            <div class="text-right mb-4">
+                                <span class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold border border-white/30">
+                                    مجلة العروض
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">عروض الأسبوع</h3>
+                            <p class="mb-6 drop-shadow-md">اكتشف أحدث العروض والخصومات المميزة</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="w-full bg-white/90 text-green-800 px-6 py-3 rounded-xl font-bold hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                عرض المجلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner 2: Smart Choice -->
+                <div class="relative rounded-3xl overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-2xl h-80">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+                         style="background-image: url('./vegetable/2.jpg');">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10 p-8 h-full flex flex-col justify-between text-white">
+                        <div>
+                            <div class="text-right mb-4">
+                                <span class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold border border-white/30">
+                                    الاختيار الذكي
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">التوفير</h3>
+                            <p class="mb-6 drop-shadow-md">خيارات ذكية للتوفير والجودة</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="w-full bg-white/90 text-green-800 px-6 py-3 rounded-xl font-bold hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                اكتشف العروض
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner 3: Exclusive Members -->
+                <div class="relative rounded-3xl overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-2xl h-80">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+                         style="background-image: url('./vegetable/3.jpg');">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10 p-8 h-full flex flex-col justify-between text-white">
+                        <div>
+                            <div class="text-right mb-4">
+                                <span class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold border border-white/30">
+                                    الأعضاء الحصرية
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 drop-shadow-lg">بلس</h3>
+                            <p class="mb-6 drop-shadow-md">مزايا حصرية وخدمات متميزة</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="w-full bg-white/90 text-green-800 px-6 py-3 rounded-xl font-bold hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                اشترك الآن
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
+     
+
+
+
+
+
+    
+
+
+
+
+    
+     <!-- Featured Products Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">المنتجات المميزة</h2>
+                <p class="text-xl text-gray-600">اكتشف أفضل المنتجات المختارة خصيصاً لك</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-gray-100">
+                    <div class="relative">
+                        <a href="product-details.html">
+                            <img src="./products/1.jpg" 
+                                 alt="أرز بسمتي" 
+                                 class="w-full h-40 md:h-48 object-contain group-hover:scale-110 transition-transform duration-500 cursor-pointer">
+                        </a>
+                        <div class="absolute top-3 right-3 bg-gradient-to-r from-red-500 to-red-600 text-white px-2 py-1 rounded-full text-xs md:text-sm font-semibold shadow-lg">
+                            خصم 20%
+                        </div>
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-gray-800 px-2 py-1 rounded-full text-xs flex items-center">
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="ml-1 font-medium">4.8</span>
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
+                            متوفر
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <a href="product-details.html" class="text-base md:text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors leading-tight hover:underline">أرز بسمتي هندي</a>
+                            <button class="text-gray-400 hover:text-red-500 transition-colors flex-shrink-0 p-1">
+                                <i class="far fa-heart text-sm md:text-base"></i>
+                            </button>
+                        </div>
+                        <p class="text-gray-600 mb-2 text-xs md:text-base leading-tight">أرز بسمتي عالي الجودة - 5 كيلو</p>
+                        
+                        <!-- Product Details -->
+                        <div class="mb-3 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center text-xs md:text-sm text-gray-500">
+                                    <i class="fas fa-truck text-green-500 ml-1"></i>
+                                    <span class="hidden sm:inline">توصيل مجاني</span>
+                                    <span class="sm:hidden">توصيل</span>
+                                </div>
+                                <div class="flex items-center text-xs md:text-sm text-gray-500">
+                                    <i class="fas fa-shield-alt text-blue-500 ml-1"></i>
+                                    <span class="hidden sm:inline">ضمان الجودة</span>
+                                    <span class="sm:hidden">ضمان</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Price -->
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 space-x-reverse">
+                                <span class="text-lg md:text-1xl font-bold text-green-600">45 ريال</span>
+                                <span class="text-xs md:text-lg text-gray-500 line-through" style="font-size: 0.6rem;">56 ريال</span>
+                            </div>
+                            <div class="text-xs md:text-sm text-green-600 font-medium bg-green-50 px-2 py-1 rounded-full whitespace-nowrap">
+                                وفر 11 ريال
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity Selector -->
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs md:text-base font-medium text-gray-700">الكمية:</span>
+                            <div class="flex items-center rounded-lg overflow-hidden">
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-2 md:px-3 py-1 transition-colors" onclick="changeQuantity(this, -1)">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="quantity-display px-2 md:px-4 py-1 bg-white text-center min-w-[35px] text-xs md:text-base font-medium">1</span>
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-2 md:px-3 py-1 transition-colors" onclick="changeQuantity(this, 1)">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Add to Cart Button -->
+                        <button class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white px-2 md:px-4 py-2 md:py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm md:text-base">
+                            <i class="fas fa-shopping-cart ml-1 md:ml-2 text-xs md:text-sm"></i>
+                            <span class="hidden sm:inline">أضف للسلة</span>
+                            <span class="sm:hidden">أضف</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-gray-100">
+                    <div class="relative">
+                        <img src="./products/2.jpg" 
+                             alt="زيت زيتون" 
+                             class="w-full h-40 md:h-48 object-contain group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-gradient-to-r from-green-500 to-green-600 text-white px-2 py-1 rounded-full text-xs md:text-sm font-semibold shadow-lg">
+                            جديد
+                        </div>
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-gray-800 px-2 py-1 rounded-full text-xs flex items-center">
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="ml-1 font-medium">4.9</span>
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
+                            متوفر
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-base md:text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors leading-tight">زيت زيتون إيطالي</h3>
+                            <button class="text-gray-400 hover:text-red-500 transition-colors flex-shrink-0 p-1">
+                                <i class="far fa-heart text-sm md:text-base"></i>
+                            </button>
+                        </div>
+                        <p class="text-gray-600 mb-2 text-xs md:text-base leading-tight">زيت زيتون بكر ممتاز - 1 لتر</p>
+                        
+                        <!-- Product Details -->
+                        <div class="mb-3 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center text-xs md:text-sm text-gray-500">
+                                    <i class="fas fa-truck text-green-500 ml-1"></i>
+                                    <span class="hidden sm:inline">توصيل مجاني</span>
+                                    <span class="sm:hidden">توصيل</span>
+                                </div>
+                                <div class="flex items-center text-xs md:text-sm text-gray-500">
+                                    <i class="fas fa-leaf text-green-500 ml-1"></i>
+                                    <span class="hidden sm:inline">طبيعي 100%</span>
+                                    <span class="sm:hidden">طبيعي</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Price -->
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 space-x-reverse">
+                                <span class="text-lg md:text-1xl font-bold text-green-600">89 ريال</span>
+                            </div>
+                            <div class="text-xs md:text-sm text-blue-600 font-medium bg-blue-50 px-2 py-1 rounded-full whitespace-nowrap">
+                                منتج مميز
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity Selector -->
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs md:text-base font-medium text-gray-700">الكمية:</span>
+                            <div class="flex items-center rounded-lg overflow-hidden">
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-2 md:px-3 py-1 transition-colors" onclick="changeQuantity(this, -1)">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="quantity-display px-2 md:px-4 py-1 bg-white text-center min-w-[35px] text-xs md:text-base font-medium">1</span>
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-2 md:px-3 py-1 transition-colors" onclick="changeQuantity(this, 1)">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Add to Cart Button -->
+                        <button class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white px-2 md:px-4 py-2 md:py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm md:text-base">
+                            <i class="fas fa-shopping-cart ml-1 md:ml-2 text-xs md:text-sm"></i>
+                            <span class="hidden sm:inline">أضف للسلة</span>
+                            <span class="sm:hidden">أضف</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-gray-100">
+                    <div class="relative">
+                        <img src="./products/3.jpg" 
+                             alt="لحم بقري" 
+                             class="w-full h-40 md:h-48 object-contain group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 py-1 rounded-full text-xs md:text-sm font-semibold shadow-lg">
+                            طازج
+                        </div>
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-gray-800 px-2 py-1 rounded-full text-xs flex items-center">
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="ml-1 font-medium">4.7</span>
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
+                            محدود
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-base md:text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors leading-tight">لحم بقري طازج</h3>
+                            <button class="text-gray-400 hover:text-red-500 transition-colors flex-shrink-0 p-1">
+                                <i class="far fa-heart text-sm md:text-base"></i>
+                            </button>
+                        </div>
+                        <p class="text-gray-600 mb-2 text-xs md:text-base leading-tight">لحم بقري عالي الجودة - للكيلو</p>
+                        
+                        <!-- Product Details -->
+                        <div class="mb-3 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center text-xs md:text-sm text-gray-500">
+                                    <i class="fas fa-snowflake text-blue-500 ml-1"></i>
+                                    <span class="hidden sm:inline">طازج يومياً</span>
+                                    <span class="sm:hidden">طازج</span>
+                                </div>
+                                <div class="flex items-center text-xs md:text-sm text-gray-500">
+                                    <i class="fas fa-certificate text-yellow-500 ml-1"></i>
+                                    <span class="hidden sm:inline">جودة عالية</span>
+                                    <span class="sm:hidden">جودة</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Price -->
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 space-x-reverse">
+                                <span class="text-lg md:text-1xl font-bold text-green-600">65 ريال</span>
+                            </div>
+                            <div class="text-xs md:text-sm text-orange-600 font-medium bg-orange-50 px-2 py-1 rounded-full whitespace-nowrap">
+                                كمية محدودة
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity Selector -->
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs md:text-base font-medium text-gray-700">الكمية:</span>
+                            <div class="flex items-center rounded-lg overflow-hidden">
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-2 md:px-3 py-1 transition-colors" onclick="changeQuantity(this, -1)">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="quantity-display px-2 md:px-4 py-1 bg-white text-center min-w-[35px] text-xs md:text-base font-medium">1</span>
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-2 md:px-3 py-1 transition-colors" onclick="changeQuantity(this, 1)">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Add to Cart Button -->
+                        <button class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white px-2 md:px-4 py-2 md:py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm md:text-base">
+                            <i class="fas fa-shopping-cart ml-1 md:ml-2 text-xs md:text-sm"></i>
+                            <span class="hidden sm:inline">أضف للسلة</span>
+                            <span class="sm:hidden">أضف</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-gray-100">
+                    <div class="relative">
+                        <img src="./products/4.jpg" 
+                             alt="حليب كامل الدسم" 
+                             class="w-full h-40 md:h-48 object-contain group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-gray-800 px-2 py-1 rounded-full text-xs flex items-center">
+                            <span class="text-yellow-400">⭐</span>
+                            <span class="ml-1 font-medium">4.6</span>
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
+                            متوفر
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-base md:text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors leading-tight">حليب كامل الدسم</h3>
+                            <button class="text-gray-400 hover:text-red-500 transition-colors flex-shrink-0 p-1">
+                                <i class="far fa-heart text-sm md:text-base"></i>
+                            </button>
+                        </div>
+                        <p class="text-gray-600 mb-2 text-xs md:text-base leading-tight">حليب طازج كامل الدسم - 1 لتر</p>
+                        
+                        <!-- Product Details -->
+                        <div class="mb-3 space-y-1">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center text-xs md:text-sm text-gray-500">
+                                    <i class="fas fa-snowflake text-blue-500 ml-1"></i>
+                                    <span class="hidden sm:inline">طازج يومياً</span>
+                                    <span class="sm:hidden">طازج</span>
+                                </div>
+                                <div class="flex items-center text-xs md:text-sm text-gray-500">
+                                    <i class="fas fa-heart text-red-500 ml-1"></i>
+                                    <span class="hidden sm:inline">غني بالفيتامينات</span>
+                                    <span class="sm:hidden">فيتامينات</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Price -->
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 space-x-reverse">
+                                <span class="text-lg md:text-1xl font-bold text-green-600">12 ريال</span>
+                            </div>
+                            <div class="text-xs md:text-sm text-green-600 font-medium bg-green-50 px-2 py-1 rounded-full whitespace-nowrap">
+                                سعر ممتاز
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity Selector -->
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs md:text-base font-medium text-gray-700">الكمية:</span>
+                            <div class="flex items-center rounded-lg overflow-hidden">
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-2 md:px-3 py-1 transition-colors" onclick="changeQuantity(this, -1)">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="quantity-display px-2 md:px-4 py-1 bg-white text-center min-w-[35px] text-xs md:text-base font-medium">1</span>
+                                <button class="quantity-btn bg-gray-100 hover:bg-gray-200 px-2 md:px-3 py-1 transition-colors" onclick="changeQuantity(this, 1)">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Add to Cart Button -->
+                        <button class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white px-2 md:px-4 py-2 md:py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm md:text-base">
+                            <i class="fas fa-shopping-cart ml-1 md:ml-2 text-xs md:text-sm"></i>
+                            <span class="hidden sm:inline">أضف للسلة</span>
+                            <span class="sm:hidden">أضف</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Revolutionary Healthy Food Section -->
+    <section class="py-12 m-2 rounded-lg md:py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-8 md:mb-12 lg:mb-16">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6">
+                    <span class="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                        Healthy Food
+                    </span>
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
+                    اكتشف عالماً من الأطعمة الصحية والطبيعية المختارة بعناية لصحتك ولياقتك
+                </p>
+            </div>
+
+            <!-- Main Grid Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Left Side: Large Featured Image -->
+                <div class="relative group cursor-pointer overflow-hidden rounded-3xl shadow-2xl h-[400px] md:h-[500px] lg:h-[600px]">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-600">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="أطعمة صحية متنوعة" 
+                             class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/70 via-emerald-800/40 to-transparent"></div>
+                    
+                    <!-- 3D Floating Elements -->
+                    <div class="absolute top-3 right-3 md:top-6 md:right-6 w-12 h-12 md:w-16 md:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
+                        <i class="fas fa-heart text-white text-lg md:text-2xl animate-pulse"></i>
+                    </div>
+                    
+                    <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6 w-16 h-16 md:w-20 md:h-20 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:-rotate-6 transition-all duration-700">
+                        <span class="text-white font-bold text-sm md:text-lg">100%</span>
+                    </div>
+                    
+                    <!-- Content Overlay -->
+                    <div class="absolute inset-0 flex items-end p-4 md:p-6 lg:p-8">
+                        <div class="text-white">
+                            <h3 class="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-3 drop-shadow-lg group-hover:text-green-200 transition-colors duration-300">
+                                تشكيلة متكاملة
+                            </h3>
+                            <p class="text-sm md:text-base lg:text-lg text-green-100 mb-3 md:mb-4 drop-shadow-md">
+                                أطعمة طبيعية 100% غنية بالفيتامينات والمعادن
+                            </p>
+                            <div class="flex items-center">
+                                <span class="bg-white/20 backdrop-blur-sm px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-semibold">
+                                    خالي من المواد الحافظة
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hover Animation Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                </div>
+
+                <!-- Right Side: Grid of 4 Images -->
+                <div class="grid grid-cols-2 gap-4 h-[400px] md:h-[500px] lg:h-[600px]">
+                    
+                    <!-- Top Left: Fruits -->
+                    <div class="relative group cursor-pointer overflow-hidden rounded-xl md:rounded-2xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="فواكه طازجة" 
+                                 class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                        </div>
+                        
+                        <!-- Color Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-orange-600/60 to-transparent group-hover:from-orange-700/70 transition-all duration-300"></div>
+                        
+                        <!-- Floating Icon -->
+                        <div class="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-apple-alt text-white text-sm md:text-base"></i>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="absolute bottom-2 left-2 right-2 md:bottom-3 md:left-3 md:right-3 text-white">
+                            <h4 class="font-bold text-sm md:text-lg drop-shadow-lg group-hover:text-orange-200 transition-colors">
+                                فواكه طازجة
+                            </h4>
+                            <p class="text-xs md:text-sm text-orange-100 drop-shadow-md">
+                                غنية بالفيتامينات
+                            </p>
+                        </div>
+                        
+                        <!-- Animated Border -->
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-orange-300 rounded-xl md:rounded-2xl transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Top Right: Vegetables -->
+                    <div class="relative group cursor-pointer overflow-hidden rounded-xl md:rounded-2xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="خضروات طازجة" 
+                                 class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                        </div>
+                        
+                        <!-- Color Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-green-600/60 to-transparent group-hover:from-green-700/70 transition-all duration-300"></div>
+                        
+                        <!-- Floating Icon -->
+                        <div class="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-carrot text-white text-sm md:text-base"></i>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="absolute bottom-2 left-2 right-2 md:bottom-3 md:left-3 md:right-3 text-white">
+                            <h4 class="font-bold text-sm md:text-lg drop-shadow-lg group-hover:text-green-200 transition-colors">
+                                خضروات عضوية
+                            </h4>
+                            <p class="text-xs md:text-sm text-green-100 drop-shadow-md">
+                                طبيعية 100%
+                            </p>
+                        </div>
+                        
+                        <!-- Animated Border -->
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-green-300 rounded-xl md:rounded-2xl transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Bottom Left: Grains & Nuts -->
+                    <div class="relative group cursor-pointer overflow-hidden rounded-xl md:rounded-2xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="حبوب ومكسرات" 
+                                 class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                        </div>
+                        
+                        <!-- Color Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-amber-600/60 to-transparent group-hover:from-amber-700/70 transition-all duration-300"></div>
+                        
+                        <!-- Floating Icon -->
+                        <div class="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-seedling text-white text-sm md:text-base"></i>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="absolute bottom-2 left-2 right-2 md:bottom-3 md:left-3 md:right-3 text-white">
+                            <h4 class="font-bold text-sm md:text-lg drop-shadow-lg group-hover:text-amber-200 transition-colors">
+                                حبوب كاملة
+                            </h4>
+                            <p class="text-xs md:text-sm text-amber-100 drop-shadow-md">
+                                غنية بالألياف
+                            </p>
+                        </div>
+                        
+                        <!-- Animated Border -->
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-amber-300 rounded-xl md:rounded-2xl transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Bottom Right: Superfoods -->
+                    <div class="relative group cursor-pointer overflow-hidden rounded-xl md:rounded-2xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="أطعمة خارقة" 
+                                 class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                        </div>
+                        
+                        <!-- Color Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-purple-600/60 to-transparent group-hover:from-purple-700/70 transition-all duration-300"></div>
+                        
+                        <!-- Floating Icon -->
+                        <div class="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-star text-white text-sm md:text-base"></i>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="absolute bottom-2 left-2 right-2 md:bottom-3 md:left-3 md:right-3 text-white">
+                            <h4 class="font-bold text-sm md:text-lg drop-shadow-lg group-hover:text-purple-200 transition-colors">
+                                أطعمة خارقة
+                            </h4>
+                            <p class="text-xs md:text-sm text-purple-100 drop-shadow-md">
+                                طاقة طبيعية
+                            </p>
+                        </div>
+                        
+                        <!-- Animated Border -->
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-purple-300 rounded-2xl transition-all duration-300"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Call-to-Action Button -->
+            <div class="text-center mt-12">
+                <button class="group relative bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 text-white px-12 py-4 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 overflow-hidden">
+                    <!-- Button Background Animation -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <!-- Button Content -->
+                    <span class="relative z-10 flex items-center justify-center">
+                        <i class="fas fa-shopping-basket ml-3 text-xl group-hover:animate-bounce"></i>
+                        تسوق الأطعمة الصحية الآن
+                        <i class="fas fa-arrow-left mr-3 text-xl group-hover:translate-x-2 transition-transform duration-300"></i>
+                    </span>
+                    
+                    <!-- Shine Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    
+    
+    
+
+    <!-- Store Locations Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">مواقع متاجرنا</h2>
+                <p class="text-xl text-gray-600">زورونا في أقرب فرع لكم أو اطلبوا التوصيل للمنزل</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Store 1 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center ml-4">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">فرع الرياض الرئيسي</h4>
+                            <p class="text-gray-600">حي الملك فهد</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">شارع الملك فهد، الرياض 12345</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">ساعات العمل: 6:00 - 24:00</span>
+                        <button class="text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-phone ml-1"></i> اتصل بنا
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Store 2 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center ml-4">
+                            <i class="fas fa-map-marker-alt text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">فرع جدة</h4>
+                            <p class="text-gray-600">حي الروضة</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">شارع الأمير محمد بن عبدالعزيز، جدة 21577</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">ساعات العمل: 6:00 - 24:00</span>
+                        <button class="text-green-600 hover:text-green-800">
+                            <i class="fas fa-phone ml-1"></i> اتصل بنا
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Store 3 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center ml-4">
+                            <i class="fas fa-map-marker-alt text-purple-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">فرع الدمام</h4>
+                            <p class="text-gray-600">حي الفيصلية</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">شارع الملك خالد، الدمام 32256</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">ساعات العمل: 6:00 - 24:00</span>
+                        <button class="text-purple-600 hover:text-purple-800">
+                            <i class="fas fa-phone ml-1"></i> اتصل بنا
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+     <!-- Main Banner Section -->
+     <section class="py-8 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer">
+                <!-- Main Banner Image -->
+                <div class="relative w-full">
+                    <img src="./main_banner/1.jpg" 
+                         alt="عرض رئيسي - سوبر ماركت الأسرة" 
+                         class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                         style="aspect-ratio: 3/1; max-height: 400px;">
+                    
+                    <!-- Overlay for better text visibility (optional) -->
+                    <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <!-- Optional Content Overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="text-center">
+                            <button class="bg-white/90 backdrop-blur-sm text-green-800 px-8 py-3 rounded-xl font-bold hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                <span>اكتشف العرض</span>
+                                <i class="fas fa-arrow-left mr-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
 
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            خدماتنا
-          </h2>
-          <p class="text-lg text-gray-600">
-            نقدم مجموعة متنوعة من الخدمات لراحتكم
-          </p>
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">خدماتنا</h2>
+                <p class="text-xl text-gray-600">نقدم أفضل الخدمات لعملائنا الكرام</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-8 bg-gray-50 rounded-2xl">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shipping-fast text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">توصيل سريع</h3>
+                    <p class="text-gray-600">توصيل سريع لجميع الطلبات في نفس اليوم</p>
+                </div>
+                
+                <div class="text-center p-8 bg-gray-50 rounded-2xl">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">ضمان الجودة</h3>
+                    <p class="text-gray-600">جميع منتجاتنا تأتي بضمان الجودة والطزاجة</p>
+                </div>
+                
+                <div class="text-center p-8 bg-gray-50 rounded-2xl">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-headset text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">دعم العملاء</h3>
+                    <p class="text-gray-600">فريق دعم العملاء متاح 24/7 لمساعدتك</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">التوصيل المجاني</h3>
-            <p class="text-gray-600">خدمة توصيل مجانية لطلبات أكثر من 100 ريال</p>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">توصيل سريع</h3>
-            <p class="text-gray-600">توصيل خلال ساعتين داخل المدينة</p>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">ضمان الجودة</h3>
-            <p class="text-gray-600">ضمان استرداد المال في حالة عدم الرضا</p>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">عروض أسبوعية</h3>
-            <p class="text-gray-600">خصومات وعروض مميزة كل أسبوع</p>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">دفع آمن</h3>
-            <p class="text-gray-600">طرق دفع متعددة وآمنة</p>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">دعم فني 24/7</h3>
-            <p class="text-gray-600">فريق دعم متاح على مدار الساعة</p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Offers Section -->
-    <section id="offers" class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            العروض الحالية
-          </h2>
-          <p class="text-lg text-gray-600">
-            اكتشف أحدث العروض والخصومات المتاحة الآن
-          </p>
+
+    
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-shopping-basket text-green-500 text-2xl ml-3"></i>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        نقدم أجود المنتجات الغذائية بأفضل الأسعار لجميع أفراد الأسرة
+                    </p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-white mx-2">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white mx-2">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white mx-2">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white mx-2">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">الرئيسية</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">المنتجات</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">العروض</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">من نحن</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">الفئات</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">خضروات وفواكه</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">اللحوم والدواجن</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">الألبان والأجبان</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">المخبوزات</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">المشروبات</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">تواصل معنا</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-green-500 ml-3"></i>
+                            <span class="text-gray-400">الرياض، المملكة العربية السعودية</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-green-500 ml-3"></i>
+                            <span class="text-gray-400">800-123-4567</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-green-500 ml-3"></i>
+                            <span class="text-gray-400">info@supermarket.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 سوبر ماركت الأسرة. جميع الحقوق محفوظة.
+                </p>
+            </div>
         </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-lg border border-red-200">
-            <div class="text-red-600 text-3xl mb-3">🎯</div>
-            <h3 class="text-xl font-bold text-red-900 mb-2">خصم 50% على الخضار</h3>
-            <p class="text-red-700 mb-4">خصم كبير على جميع أنواع الخضار الطازجة</p>
-            <span class="inline-block bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-              صالح حتى نهاية الشهر
-            </span>
-          </div>
-          
-          <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border border-green-200">
-            <div class="text-green-600 text-3xl mb-3">🥛</div>
-            <h3 class="text-xl font-bold text-green-900 mb-2">عرض 3 بسعر 2</h3>
-            <p class="text-green-700 mb-4">على جميع منتجات الألبان والأجبان</p>
-            <span class="inline-block bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-              لمدة محدودة
-            </span>
-          </div>
-          
-          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200">
-            <div class="text-blue-600 text-3xl mb-3">🚚</div>
-            <h3 class="text-xl font-bold text-blue-900 mb-2">توصيل مجاني</h3>
-            <p class="text-blue-700 mb-4">لجميع الطلبات أكثر من 100 ريال</p>
-            <span class="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-              عرض دائم
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            تواصل معنا
-          </h2>
-          <p class="text-lg text-gray-600">
-            نحن هنا لمساعدتك في أي وقت
-          </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="text-center p-6 bg-white rounded-lg shadow-md">
-            <div class="w-12 h-12 mx-auto mb-4 bg-green-100 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-2">الهاتف</h3>
-            <p class="text-gray-600" style="direction: ltr;">+966 50 4737 219</p>
-          </div>
-          
-          <div class="text-center p-6 bg-white rounded-lg shadow-md">
-            <div class="w-12 h-12 mx-auto mb-4 bg-green-100 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-2">البريد الإلكتروني</h3>
-            <p class="text-gray-600">info@supermarket.com</p>
-          </div>
-          
-          <div class="text-center p-6 bg-white rounded-lg shadow-md">
-            <div class="w-12 h-12 mx-auto mb-4 bg-green-100 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-2">العنوان</h3>
-            <p class="text-gray-600">جدة, المملكة العربية السعودية</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-lg font-medium">© 2024 السوبر ماركت</p>
-      <p class="text-gray-400 mt-2">جميع الحقوق محفوظة</p>
-    </div>
-  </footer>
-
-  <!-- JavaScript for Mobile Menu -->
-  <script>
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const backdrop = document.getElementById('backdrop');
-    const closeMenuBtn = document.getElementById('close-menu-btn');
-    const hamburgerIcon = document.getElementById('hamburger-icon');
-    const closeIcon = document.getElementById('close-icon');
-    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-
-    function openMenu() {
-      mobileMenuOverlay.classList.remove('hidden');
-      hamburgerIcon.classList.add('hidden');
-      closeIcon.classList.remove('hidden');
-      
-      setTimeout(() => {
-        mobileMenu.classList.remove('translate-x-full');
-      }, 10);
-    }
-
-    function closeMenu() {
-      mobileMenu.classList.add('translate-x-full');
-      hamburgerIcon.classList.remove('hidden');
-      closeIcon.classList.add('hidden');
-      
-      setTimeout(() => {
-        mobileMenuOverlay.classList.add('hidden');
-      }, 300);
-    }
-
-    mobileMenuButton.addEventListener('click', function() {
-      if (mobileMenuOverlay.classList.contains('hidden')) {
-        openMenu();
-      } else {
-        closeMenu();
-      }
-    });
-
-    backdrop.addEventListener('click', closeMenu);
-    closeMenuBtn.addEventListener('click', closeMenu);
-
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && !mobileMenuOverlay.classList.contains('hidden')) {
-        closeMenu();
-      }
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
         }
-      });
-    });
-  </script>
 
-  <!-- Swiper.js JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Cart functionality
+        let cartItems = [];
+        let cartCount = 0;
+
+        function addToCart(productName, price) {
+            cartItems.push({
+                name: productName,
+                price: price,
+                quantity: 1
+            });
+            cartCount++;
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartBadge = document.querySelector('.fas.fa-shopping-cart + span');
+            if (cartBadge) {
+                cartBadge.textContent = cartCount;
+            }
+        }
+
+        // Quantity control function
+        function changeQuantity(button, change) {
+            const quantityDisplay = button.parentElement.querySelector('.quantity-display');
+            let currentQuantity = parseInt(quantityDisplay.textContent);
+            let newQuantity = currentQuantity + change;
+            
+            // Ensure quantity doesn't go below 1
+            if (newQuantity < 1) {
+                newQuantity = 1;
+            }
+            
+            // Set maximum quantity limit
+            if (newQuantity > 99) {
+                newQuantity = 99;
+            }
+            
+            quantityDisplay.textContent = newQuantity;
+            
+            // Visual feedback
+            quantityDisplay.style.transform = 'scale(1.2)';
+            quantityDisplay.style.color = '#16a34a';
+            
+            setTimeout(() => {
+                quantityDisplay.style.transform = 'scale(1)';
+                quantityDisplay.style.color = '';
+            }, 200);
+        }
+
+        // Add click handlers to "Add to Cart" buttons
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('أضف للسلة')) {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.bg-white');
+                    const productName = productCard.querySelector('h3').textContent;
+                    const price = productCard.querySelector('.text-green-600').textContent;
+                    const quantity = parseInt(productCard.querySelector('.quantity-display').textContent);
+                    
+                    // Add to cart with quantity
+                    for (let i = 0; i < quantity; i++) {
+                        addToCart(productName, price);
+                    }
+                    
+                    // Visual feedback
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check ml-2"></i>تم الإضافة!';
+                    this.classList.add('!bg-green-700');
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.classList.remove('!bg-green-700');
+                    }, 1500);
+                });
+            }
+        });
+
+        // Add click handlers for heart/wishlist buttons
+        document.querySelectorAll('.fa-heart').forEach(heart => {
+            heart.addEventListener('click', function() {
+                if (this.classList.contains('far')) {
+                    this.classList.remove('far');
+                    this.classList.add('fas');
+                    this.style.color = '#ef4444';
+                } else {
+                    this.classList.remove('fas');
+                    this.classList.add('far');
+                    this.style.color = '';
+                }
+            });
+        });
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.getElementById('scroll-indicator');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            scrollIndicator.style.transform = `scaleX(${scrolled / 100})`;
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            // Here you would typically filter products based on search term
+            console.log('البحث عن:', searchTerm);
+        });
+
+        // Newsletter subscription
+        const newsletterForm = document.querySelector('input[type="email"]').parentElement;
+        const newsletterBtn = newsletterForm.querySelector('button');
+        if (newsletterBtn) {
+            newsletterBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = document.querySelector('input[type="email"]').value;
+                if (email && email.includes('@')) {
+                    alert('تم الاشتراك بنجاح! سنرسل لك أحدث العروض على ' + email);
+                    document.querySelector('input[type="email"]').value = '';
+                } else {
+                    alert('يرجى إدخال بريد إلكتروني صحيح');
+                }
+            });
+        }
+
+        // Initialize Swiper for Hero Banner
+        const heroSwiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.hero-next-btn',
+                prevEl: '.hero-prev-btn',
+            },
+            effect: 'slide',
+            speed: 800,
+            autoHeight: true,
+            spaceBetween: 0,
+            slidesPerView: 1,
+        });
+
+        // Add click handlers for categories
+        document.querySelectorAll('.group.cursor-pointer').forEach(category => {
+            category.addEventListener('click', function() {
+                const categoryName = this.querySelector('h3').textContent;
+                
+                // Remove active class from all categories
+                document.querySelectorAll('.group.cursor-pointer').forEach(cat => {
+                    cat.classList.remove('active-category');
+                });
+                
+                // Add active class to clicked category
+                this.classList.add('active-category');
+                
+                // Visual feedback
+                this.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+                
+                console.log('تم اختيار الفئة:', categoryName);
+            });
+        });
+
+        // Healthy Food Section Interactive Features
+        document.addEventListener('DOMContentLoaded', function() {
+            const healthyFoodSection = document.querySelector('.py-20.relative.overflow-hidden.bg-gradient-to-br.from-green-50');
+            
+            if (healthyFoodSection) {
+                // Large featured image interactions
+                const largeImage = healthyFoodSection.querySelector('.grid.grid-cols-1.lg\\:grid-cols-2 .relative.group.cursor-pointer');
+                if (largeImage) {
+                    largeImage.addEventListener('click', function() {
+                        console.log('النقر على الصورة الرئيسية للأطعمة الصحية');
+                        
+                        this.style.transform = 'perspective(1000px) rotateY(5deg) scale(0.98)';
+                        this.style.boxShadow = '0 25px 50px rgba(34, 197, 94, 0.4)';
+                        
+                        setTimeout(() => {
+                            this.style.transform = 'perspective(1000px) rotateY(0deg) scale(1)';
+                            this.style.boxShadow = '';
+                        }, 300);
+                        
+                        showHealthyFoodNotification('تشكيلة متكاملة', 'أطعمة طبيعية 100%', 'success');
+                    });
+                }
+
+                // Small grid images interactions
+                const smallImages = healthyFoodSection.querySelectorAll('.grid.grid-cols-2.gap-4 .relative.group.cursor-pointer');
+                smallImages.forEach((image, index) => {
+                    image.addEventListener('click', function() {
+                        const title = this.querySelector('h4').textContent;
+                        const description = this.querySelector('p').textContent;
+                        
+                        console.log(`النقر على: ${title}`);
+                        
+                        // Unique animation for each category
+                        switch(index) {
+                            case 0: // Fruits
+                                this.style.transform = 'perspective(1000px) rotateX(10deg) scale(1.05)';
+                                this.style.filter = 'hue-rotate(10deg) brightness(1.1)';
+                                break;
+                            case 1: // Vegetables  
+                                this.style.transform = 'perspective(1000px) rotateY(-10deg) scale(1.05)';
+                                this.style.filter = 'saturate(1.3) brightness(1.1)';
+                                break;
+                            case 2: // Grains
+                                this.style.transform = 'perspective(1000px) rotateX(-8deg) scale(1.05)';
+                                this.style.filter = 'sepia(0.2) brightness(1.1)';
+                                break;
+                            case 3: // Superfoods
+                                this.style.transform = 'perspective(1000px) rotateY(8deg) scale(1.05)';
+                                this.style.filter = 'contrast(1.2) brightness(1.1)';
+                                break;
+                        }
+                        
+                        setTimeout(() => {
+                            this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                            this.style.filter = '';
+                        }, 400);
+                        
+                        showHealthyFoodNotification(title, description, index);
+                    });
+                });
+
+                // CTA Button enhanced interaction
+                const ctaButton = healthyFoodSection.querySelector('.text-center.mt-12 button');
+                if (ctaButton) {
+                    ctaButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        console.log('النقر على زر تسوق الأطعمة الصحية');
+                        
+                        this.style.transform = 'perspective(1000px) rotateX(10deg) scale(0.95)';
+                        this.style.boxShadow = '0 15px 30px rgba(34, 197, 94, 0.6)';
+                        
+                        setTimeout(() => {
+                            this.style.transform = 'perspective(1000px) rotateX(0deg) scale(1)';
+                            this.style.boxShadow = '';
+                        }, 300);
+                        
+                        showHealthyFoodNotification('جاري التحويل...', 'سيتم توجيهك إلى قسم الأطعمة الصحية', 'success');
+                    });
+                }
+            }
+        });
+
+        // Helper function to show notifications
+        function showHealthyFoodNotification(title, message, type) {
+            const existingNotification = document.querySelector('.healthy-food-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            const notification = document.createElement('div');
+            notification.className = 'healthy-food-notification fixed top-20 right-6 z-50 transform translate-x-full transition-transform duration-500';
+            
+            const colors = {
+                'success': 'from-green-500 to-emerald-600',
+                'feature': 'from-blue-500 to-cyan-600',
+                0: 'from-orange-500 to-red-500',    // Fruits
+                1: 'from-green-500 to-emerald-600', // Vegetables  
+                2: 'from-amber-500 to-yellow-600',  // Grains
+                3: 'from-purple-500 to-pink-600'    // Superfoods
+            };
+            
+            const bgGradient = colors[type] || colors['success'];
+            
+            notification.innerHTML = `
+                <div class="bg-gradient-to-r ${bgGradient} text-white p-4 rounded-2xl shadow-2xl max-w-sm">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-leaf text-white"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-sm truncate">${title}</h4>
+                            <p class="text-xs text-white/90 mt-1">${message}</p>
+                        </div>
+                        <button onclick="this.closest('.healthy-food-notification').remove()" 
+                                class="text-white/80 hover:text-white transition-colors">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+                notification.classList.add('translate-x-0');
+            }, 100);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.classList.add('translate-x-full');
+                    setTimeout(() => notification.remove(), 500);
+                }
+            }, 4000);
+        }
+          </script>
   
-  <!-- Initialize Swiper -->
-  <script>
-    // Initialize Daily Offers Swiper
-    const dailyOffersSwiper = new Swiper('.daily-offers-swiper', {
-      // Optional parameters
-      loop: true,
-      slidesPerView: 1,
-      spaceBetween: 15,
-      centeredSlides: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      
-      // Responsive breakpoints
-      breakpoints: {
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-          centeredSlides: false,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-          centeredSlides: false,
-        },
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 30,
-          centeredSlides: false,
-        },
-      },
-      
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      
-      // Pagination
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
 
-    // Add to cart functionality
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-      button.addEventListener('click', function() {
-        const productCard = this.closest('.product-card');
-        const productName = productCard.querySelector('.product-name').textContent;
-        const productPrice = productCard.querySelector('.product-price').textContent;
-        
-        // Create success animation
-        const originalHTML = this.innerHTML;
-        this.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
-        this.style.backgroundColor = '#059669';
-        this.style.transform = 'scale(1.2)';
-        
-        // Show floating notification
-        showAddToCartNotification(productName, productPrice);
-        
-        setTimeout(() => {
-          this.innerHTML = originalHTML;
-          this.style.backgroundColor = '#22c55e';
-          this.style.transform = 'scale(1)';
-        }, 1500);
-        
-        console.log(`تمت إضافة ${productName} (${productPrice}) إلى السلة`);
-      });
-    });
 
-    // Show floating notification
-    function showAddToCartNotification(productName, productPrice) {
-      const notification = document.createElement('div');
-      notification.innerHTML = `
-        <div style="
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          background: #059669;
-          color: white;
-          padding: 12px 20px;
-          border-radius: 8px;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-          z-index: 10000;
-          font-weight: 600;
-          transform: translateX(100%);
-          transition: all 0.3s ease;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        ">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          تمت إضافة ${productName} للسلة
-        </div>
-      `;
-      
-      document.body.appendChild(notification);
-      
-      setTimeout(() => {
-        notification.firstElementChild.style.transform = 'translateX(0)';
-      }, 100);
-      
-      setTimeout(() => {
-        notification.firstElementChild.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-          document.body.removeChild(notification);
-        }, 300);
-      }, 2000);
-    }
-    
-    // Banner Section Interactive Features
-    document.querySelectorAll('.tpbanner__item').forEach((banner, index) => {
-      banner.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Get banner details
-        const bannerTitle = this.querySelector('.tpbanner__title').textContent.trim();
-        const bannerSubtitle = this.querySelector('.tpbanner__sub-title').textContent.trim();
-        const bannerDescription = this.querySelector('p').textContent.trim();
-        
-        // Visual feedback
-        this.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-          this.style.transform = 'scale(1)';
-        }, 150);
-        
-        // Show banner clicked notification
-        showBannerNotification(bannerTitle, bannerSubtitle, bannerDescription);
-        
-        // Handle different banner actions
-        if (bannerSubtitle === 'TOP OFFERS') {
-          // Redirect to offers page or show offers
-          console.log('عرض العروض الخاصة');
-        } else if (bannerSubtitle === 'WEEKEND DEALS') {
-          // Redirect to weekend deals
-          console.log('عرض عروض نهاية الأسبوع');
-        } else if (bannerSubtitle === 'TOP SELLER') {
-          // Redirect to best sellers
-          console.log('عرض الأكثر مبيعاً');
-        }
-      });
-      
-      // Add hover sound effect (optional)
-      banner.addEventListener('mouseenter', function() {
-        this.style.transition = 'all 0.3s ease';
-      });
-    });
-    
-    // Show banner notification
-    function showBannerNotification(title, subtitle, description) {
-      const notification = document.createElement('div');
-      notification.innerHTML = `
-        <div style="
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) scale(0.8);
-          background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-          color: white;
-          padding: 24px;
-          border-radius: 16px;
-          box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-          z-index: 10000;
-          max-width: 400px;
-          text-align: center;
-          opacity: 0;
-          transition: all 0.3s ease;
-          border: 2px solid rgba(255,255,255,0.1);
-        ">
-          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #22c55e;">${subtitle}</h3>
-          <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; line-height: 1.3;">${title}</h4>
-          <p style="font-size: 14px; color: #d1d5db; margin-bottom: 16px;">${description}</p>
-          <button onclick="closeBannerNotification()" style="
-            background: #22c55e;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-          " onmouseover="this.style.background='#16a34a'" onmouseout="this.style.background='#22c55e'">
-            إغلاق
-          </button>
-        </div>
-        <div style="
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0,0,0,0.5);
-          z-index: 9999;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        " onclick="closeBannerNotification()"></div>
-      `;
-      
-      document.body.appendChild(notification);
-      
-      setTimeout(() => {
-        notification.firstElementChild.style.transform = 'translate(-50%, -50%) scale(1)';
-        notification.firstElementChild.style.opacity = '1';
-        notification.lastElementChild.style.opacity = '1';
-      }, 100);
-      
-      // Auto close after 3 seconds
-      setTimeout(() => {
-        if (document.body.contains(notification)) {
-          closeBannerNotification();
-        }
-      }, 3000);
-      
-      // Store reference for closing
-      window.currentBannerNotification = notification;
-    }
-    
-    // Close banner notification
-    function closeBannerNotification() {
-      const notification = window.currentBannerNotification;
-      if (notification && document.body.contains(notification)) {
-        notification.firstElementChild.style.transform = 'translate(-50%, -50%) scale(0.8)';
-        notification.firstElementChild.style.opacity = '0';
-        notification.lastElementChild.style.opacity = '0';
-        
-        setTimeout(() => {
-          document.body.removeChild(notification);
-        }, 300);
-      }
-    }
-    
-    // Make closeBannerNotification globally accessible
-    window.closeBannerNotification = closeBannerNotification;
-  </script>
+    <!-- Revolutionary Healthy Food Section -->
 </body>
-</html> 
+</html>
+
