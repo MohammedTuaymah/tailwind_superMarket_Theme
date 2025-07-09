@@ -129,6 +129,130 @@
       font-size: 12px;
       font-weight: 600;
     }
+    
+    /* Three Banner Section Styles */
+    .banner-area {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+    
+    .tpbanner__item {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tpbanner__content {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tpbanner__content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .tpbanner__content:hover::before {
+      left: 100%;
+    }
+    
+    .tpbanner__sub-title {
+      backdrop-filter: blur(4px);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    
+    .tpbanner__title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      line-height: 1.2;
+    }
+    
+    .tpbanner__content p {
+      font-size: 1rem;
+      font-weight: 500;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .tpbanner__content {
+        height: 300px !important;
+      }
+      
+      .tpbanner__title {
+        font-size: 1.5rem;
+      }
+      
+      .tpbanner__content p {
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* Responsive for mobile */
+    @media (max-width: 640px) {
+      .banner-area .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .tpbanner__content {
+        height: 250px !important;
+      }
+    }
+    
+    /* Additional banner effects */
+    .tpbanner__item:hover .tpbanner__content {
+      transform: translateY(-4px);
+    }
+    
+    .tpbanner__content {
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+    
+    .tpbanner__content:hover {
+      border-color: rgba(255,255,255,0.3);
+    }
+    
+    /* Pulse animation for emphasis */
+    .tpbanner__sub-title {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    /* Gradient overlays for better text readability */
+    .tpbanner__content::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+      pointer-events: none;
+    }
+    
+    /* Better hover effects */
+    .tpbanner__item:hover .tpbanner__title {
+      transform: translateY(-2px);
+      transition: transform 0.3s ease;
+    }
+    
+    .tpbanner__item:hover .tpbanner__sub-title {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
   </style>
 </head>
 
@@ -281,6 +405,66 @@
           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Three Banner Section -->
+    <section class="banner-area py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Green Banner: TOP OFFERS -->
+          <div class="tpbanner__item">
+            <a href="#shop" class="block group">
+              <div class="tpbanner__content relative h-80 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&w=800&h=600&q=80')"></div>
+                <div class="relative z-10 p-8 flex flex-col justify-center h-full text-white">
+                  <span class="tpbanner__sub-title text-sm font-semibold mb-4 bg-white bg-opacity-20 px-3 py-1 rounded-full inline-block w-fit">TOP OFFERS</span>
+                  <h4 class="tpbanner__title text-2xl font-bold mb-6 leading-tight">
+                    Eat Green<br>
+                    Best For Family
+                  </h4>
+                  <p class="text-lg font-medium">Free Shipping 05km</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- Orange Banner: WEEKEND DEALS -->
+          <div class="tpbanner__item">
+            <a href="#shop" class="block group">
+              <div class="tpbanner__content relative h-80 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&h=600&q=80')"></div>
+                <div class="relative z-10 p-8 flex flex-col justify-center h-full text-white">
+                  <span class="tpbanner__sub-title text-sm font-semibold mb-4 bg-white bg-opacity-20 px-3 py-1 rounded-full inline-block w-fit">WEEKEND DEALS</span>
+                  <h4 class="tpbanner__title text-2xl font-bold mb-6 leading-tight">
+                    Fresh Food<br>
+                    Restore Health
+                  </h4>
+                  <p class="text-lg font-medium">Top Quality Products</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- Red Banner: TOP SELLER -->
+          <div class="tpbanner__item">
+            <a href="#shop" class="block group">
+              <div class="tpbanner__content relative h-80 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&h=600&q=80')"></div>
+                <div class="relative z-10 p-8 flex flex-col justify-center h-full text-white">
+                  <span class="tpbanner__sub-title text-sm font-semibold mb-4 bg-white bg-opacity-20 px-3 py-1 rounded-full inline-block w-fit">TOP SELLER</span>
+                  <h4 class="tpbanner__title text-2xl font-bold mb-6 leading-tight">
+                    Healthy<br>
+                    Fresh Free Bread
+                  </h4>
+                  <p class="text-lg font-medium">Limited Time: Online Only!</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
         </div>
       </div>
     </section>
@@ -1009,6 +1193,130 @@
         }, 300);
       }, 2000);
     }
+    
+    // Banner Section Interactive Features
+    document.querySelectorAll('.tpbanner__item').forEach((banner, index) => {
+      banner.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Get banner details
+        const bannerTitle = this.querySelector('.tpbanner__title').textContent.trim();
+        const bannerSubtitle = this.querySelector('.tpbanner__sub-title').textContent.trim();
+        const bannerDescription = this.querySelector('p').textContent.trim();
+        
+        // Visual feedback
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 150);
+        
+        // Show banner clicked notification
+        showBannerNotification(bannerTitle, bannerSubtitle, bannerDescription);
+        
+        // Handle different banner actions
+        if (bannerSubtitle === 'TOP OFFERS') {
+          // Redirect to offers page or show offers
+          console.log('عرض العروض الخاصة');
+        } else if (bannerSubtitle === 'WEEKEND DEALS') {
+          // Redirect to weekend deals
+          console.log('عرض عروض نهاية الأسبوع');
+        } else if (bannerSubtitle === 'TOP SELLER') {
+          // Redirect to best sellers
+          console.log('عرض الأكثر مبيعاً');
+        }
+      });
+      
+      // Add hover sound effect (optional)
+      banner.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.3s ease';
+      });
+    });
+    
+    // Show banner notification
+    function showBannerNotification(title, subtitle, description) {
+      const notification = document.createElement('div');
+      notification.innerHTML = `
+        <div style="
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0.8);
+          background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+          color: white;
+          padding: 24px;
+          border-radius: 16px;
+          box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+          z-index: 10000;
+          max-width: 400px;
+          text-align: center;
+          opacity: 0;
+          transition: all 0.3s ease;
+          border: 2px solid rgba(255,255,255,0.1);
+        ">
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #22c55e;">${subtitle}</h3>
+          <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; line-height: 1.3;">${title}</h4>
+          <p style="font-size: 14px; color: #d1d5db; margin-bottom: 16px;">${description}</p>
+          <button onclick="closeBannerNotification()" style="
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+          " onmouseover="this.style.background='#16a34a'" onmouseout="this.style.background='#22c55e'">
+            إغلاق
+          </button>
+        </div>
+        <div style="
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0,0,0,0.5);
+          z-index: 9999;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        " onclick="closeBannerNotification()"></div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.firstElementChild.style.transform = 'translate(-50%, -50%) scale(1)';
+        notification.firstElementChild.style.opacity = '1';
+        notification.lastElementChild.style.opacity = '1';
+      }, 100);
+      
+      // Auto close after 3 seconds
+      setTimeout(() => {
+        if (document.body.contains(notification)) {
+          closeBannerNotification();
+        }
+      }, 3000);
+      
+      // Store reference for closing
+      window.currentBannerNotification = notification;
+    }
+    
+    // Close banner notification
+    function closeBannerNotification() {
+      const notification = window.currentBannerNotification;
+      if (notification && document.body.contains(notification)) {
+        notification.firstElementChild.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        notification.firstElementChild.style.opacity = '0';
+        notification.lastElementChild.style.opacity = '0';
+        
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }
+    }
+    
+    // Make closeBannerNotification globally accessible
+    window.closeBannerNotification = closeBannerNotification;
   </script>
 </body>
 </html> 
