@@ -598,6 +598,310 @@
         .banner-hover-effect:hover .banner-icon {
             transform: scale(1.2) rotate(10deg);
         }
+        
+        @keyframes particleMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+        
+        /* Healthy Food Section Enhanced Styles */
+        .healthy-food-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .healthy-food-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(5, 150, 105, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* 3D Card Effects */
+        .healthy-card-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .healthy-card-3d:hover {
+            transform: perspective(1000px) rotateX(2deg) rotateY(5deg) translateZ(20px);
+        }
+        
+        /* Floating Animation Keyframes */
+        @keyframes float-gentle {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                filter: hue-rotate(0deg);
+            }
+            33% { 
+                transform: translateY(-8px) rotate(1deg); 
+                filter: hue-rotate(5deg);
+            }
+            66% { 
+                transform: translateY(4px) rotate(-1deg); 
+                filter: hue-rotate(-3deg);
+            }
+        }
+        
+        .floating-element {
+            animation: float-gentle 6s ease-in-out infinite;
+        }
+        
+        /* Gradient Text Animation */
+        .gradient-text-animated {
+            background: linear-gradient(-45deg, #10b981, #059669, #047857, #065f46);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glass Morphism Enhanced */
+        .glass-morphism-enhanced {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px) saturate(200%);
+            -webkit-backdrop-filter: blur(15px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Pulse Glow Effect */
+        .pulse-glow {
+            position: relative;
+        }
+        
+        .pulse-glow::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: inherit;
+            background: linear-gradient(45deg, #10b981, #059669, #047857, #065f46);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: pulse-border 2s infinite;
+        }
+        
+        .pulse-glow:hover::before {
+            opacity: 1;
+        }
+        
+        @keyframes pulse-border {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: scale(1.05);
+                opacity: 0.9;
+            }
+        }
+        
+        /* Rainbow Border Animation */
+        .rainbow-border {
+            position: relative;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(45deg, #10b981, #f59e0b, #ef4444, #8b5cf6, #10b981) border-box;
+            border: 2px solid transparent;
+            animation: rainbow-rotate 3s linear infinite;
+        }
+        
+        @keyframes rainbow-rotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        
+        /* Stagger Animation for Grid Items */
+        .stagger-animation > * {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: staggerFadeIn 0.6s ease forwards;
+        }
+        
+        .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes staggerFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Magnetic Hover Effect */
+        .magnetic-hover {
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .magnetic-hover:hover {
+            transform: scale(1.05) translateZ(50px);
+            filter: brightness(1.1) saturate(1.2);
+        }
+        
+        /* Liquid Blob Animation */
+        .liquid-blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: blob 8s ease-in-out infinite;
+        }
+        
+        @keyframes blob {
+            0%, 100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            50% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+            75% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+                transform: translate(10px, 5px) scale(1.05);
+            }
+        }
+        
+        /* Responsive Design Improvements for Healthy Food Section */
+        @media (max-width: 768px) {
+            .py-20 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            .max-w-3xl {
+                max-width: 100% !important;
+                padding: 0 1rem;
+            }
+            
+            .p-8 {
+                padding: 1.5rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-lg {
+                font-size: 1rem !important;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .mb-16 {
+                margin-bottom: 2rem !important;
+            }
+            
+            .px-6 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .py-2 {
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
+            }
+            
+            .rounded-2xl {
+                border-radius: 1rem !important;
+            }
+            
+            .text-sm {
+                font-size: 0.75rem !important;
+            }
+        }
+        
+        /* Enhanced Mobile Experience */
+        @media (max-width: 480px) {
+            .w-16 {
+                width: 3rem !important;
+            }
+            
+            .h-16 {
+                height: 3rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .mb-6 {
+                margin-bottom: 1rem !important;
+            }
+        }
+        
+        /* Mobile-first responsive classes */
+        .mobile-healthy-section {
+            min-height: 250px;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-healthy-section {
+                min-height: 400px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-healthy-section {
+                min-height: 600px;
+            }
+        }
+        
+        /* Neon Glow Text */
+        .neon-glow {
+            text-shadow: 
+                0 0 5px currentColor,
+                0 0 10px currentColor,
+                0 0 15px currentColor,
+                0 0 20px #10b981,
+                0 0 35px #10b981,
+                0 0 40px #10b981,
+                0 0 50px #10b981,
+                0 0 75px #10b981;
+            animation: neon-flicker 2s infinite alternate;
+        }
+        
+        @keyframes neon-flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 
+                    0 0 5px currentColor,
+                    0 0 10px currentColor,
+                    0 0 15px currentColor,
+                    0 0 20px #10b981,
+                    0 0 35px #10b981,
+                    0 0 40px #10b981,
+                    0 0 50px #10b981,
+                    0 0 75px #10b981;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+        
+        /* Responsive Top Bar */
     </style>
 </head>
   <body class="bg-gray-50">
@@ -1213,6 +1517,13 @@
         </div>
     </section>
      
+
+
+
+
+
+    
+
 
 
 
@@ -2100,6 +2411,303 @@
         </div>
     </section>
 
+    <!-- Revolutionary Healthy Food Section -->
+    <section class="py-12 md:py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-5 left-5 md:top-10 md:left-10 w-12 h-12 md:w-20 md:h-20 bg-green-200 rounded-full opacity-30 animate-bounce" style="animation-delay: 0s;"></div>
+            <div class="absolute top-16 right-10 md:top-32 md:right-20 w-8 h-8 md:w-16 md:h-16 bg-emerald-300 rounded-full opacity-40 animate-bounce" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-10 left-1/4 md:bottom-20 w-6 h-6 md:w-12 md:h-12 bg-teal-200 rounded-full opacity-35 animate-bounce" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-16 right-5 md:bottom-32 md:right-10 w-16 h-16 md:w-24 md:h-24 bg-green-300 rounded-full opacity-25 animate-bounce" style="animation-delay: 0.5s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-8 md:mb-12 lg:mb-16">
+                <div class="inline-flex items-center justify-center mb-4 md:mb-6">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+                        <i class="fas fa-leaf text-white text-lg md:text-2xl"></i>
+                    </div>
+                </div>
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6">
+                    <span class="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                        Healthy Food
+                    </span>
+                </h2>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-4 md:mb-6">
+                    <span class="px-4 md:px-6 py-1 md:py-2 bg-green-100 text-green-800 rounded-full font-bold text-sm md:text-lg shadow-lg">
+                        🌱 Vegan
+                    </span>
+                    <span class="px-4 md:px-6 py-1 md:py-2 bg-emerald-100 text-emerald-800 rounded-full font-bold text-sm md:text-lg shadow-lg">
+                        🌿 Organic
+                    </span>
+                </div>
+                <p class="text-lg md:text-xl text-gray-600 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
+                    اكتشف عالماً من الأطعمة الصحية والطبيعية المختارة بعناية لصحتك ولياقتك
+                </p>
+            </div>
+
+            <!-- Main Grid Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Left Side: Large Featured Image -->
+                <div class="relative group cursor-pointer overflow-hidden rounded-3xl shadow-2xl h-[400px] md:h-[500px] lg:h-[600px]">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-600">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="أطعمة صحية متنوعة" 
+                             class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2">
+                    </div>
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-green-900/70 via-emerald-800/40 to-transparent"></div>
+                    
+                    <!-- 3D Floating Elements -->
+                    <div class="absolute top-3 right-3 md:top-6 md:right-6 w-12 h-12 md:w-16 md:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
+                        <i class="fas fa-heart text-white text-lg md:text-2xl animate-pulse"></i>
+                    </div>
+                    
+                    <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6 w-16 h-16 md:w-20 md:h-20 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:-rotate-6 transition-all duration-700">
+                        <span class="text-white font-bold text-sm md:text-lg">100%</span>
+                    </div>
+                    
+                    <!-- Content Overlay -->
+                    <div class="absolute inset-0 flex items-end p-4 md:p-6 lg:p-8">
+                        <div class="text-white">
+                            <h3 class="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-3 drop-shadow-lg group-hover:text-green-200 transition-colors duration-300">
+                                تشكيلة متكاملة
+                            </h3>
+                            <p class="text-sm md:text-base lg:text-lg text-green-100 mb-3 md:mb-4 drop-shadow-md">
+                                أطعمة طبيعية 100% غنية بالفيتامينات والمعادن
+                            </p>
+                            <div class="flex items-center">
+                                <span class="bg-white/20 backdrop-blur-sm px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-semibold">
+                                    خالي من المواد الحافظة
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hover Animation Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                </div>
+
+                <!-- Right Side: Grid of 4 Images -->
+                <div class="grid grid-cols-2 gap-4 h-[400px] md:h-[500px] lg:h-[600px]">
+                    
+                    <!-- Top Left: Fruits -->
+                    <div class="relative group cursor-pointer overflow-hidden rounded-xl md:rounded-2xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="فواكه طازجة" 
+                                 class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                        </div>
+                        
+                        <!-- Color Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-orange-600/60 to-transparent group-hover:from-orange-700/70 transition-all duration-300"></div>
+                        
+                        <!-- Floating Icon -->
+                        <div class="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-apple-alt text-white text-sm md:text-base"></i>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="absolute bottom-2 left-2 right-2 md:bottom-3 md:left-3 md:right-3 text-white">
+                            <h4 class="font-bold text-sm md:text-lg drop-shadow-lg group-hover:text-orange-200 transition-colors">
+                                فواكه طازجة
+                            </h4>
+                            <p class="text-xs md:text-sm text-orange-100 drop-shadow-md">
+                                غنية بالفيتامينات
+                            </p>
+                        </div>
+                        
+                        <!-- Animated Border -->
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-orange-300 rounded-xl md:rounded-2xl transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Top Right: Vegetables -->
+                    <div class="relative group cursor-pointer overflow-hidden rounded-xl md:rounded-2xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="خضروات طازجة" 
+                                 class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                        </div>
+                        
+                        <!-- Color Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-green-600/60 to-transparent group-hover:from-green-700/70 transition-all duration-300"></div>
+                        
+                        <!-- Floating Icon -->
+                        <div class="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-carrot text-white text-sm md:text-base"></i>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="absolute bottom-2 left-2 right-2 md:bottom-3 md:left-3 md:right-3 text-white">
+                            <h4 class="font-bold text-sm md:text-lg drop-shadow-lg group-hover:text-green-200 transition-colors">
+                                خضروات عضوية
+                            </h4>
+                            <p class="text-xs md:text-sm text-green-100 drop-shadow-md">
+                                طبيعية 100%
+                            </p>
+                        </div>
+                        
+                        <!-- Animated Border -->
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-green-300 rounded-xl md:rounded-2xl transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Bottom Left: Grains & Nuts -->
+                    <div class="relative group cursor-pointer overflow-hidden rounded-xl md:rounded-2xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="حبوب ومكسرات" 
+                                 class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                        </div>
+                        
+                        <!-- Color Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-amber-600/60 to-transparent group-hover:from-amber-700/70 transition-all duration-300"></div>
+                        
+                        <!-- Floating Icon -->
+                        <div class="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-seedling text-white text-sm md:text-base"></i>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="absolute bottom-2 left-2 right-2 md:bottom-3 md:left-3 md:right-3 text-white">
+                            <h4 class="font-bold text-sm md:text-lg drop-shadow-lg group-hover:text-amber-200 transition-colors">
+                                حبوب كاملة
+                            </h4>
+                            <p class="text-xs md:text-sm text-amber-100 drop-shadow-md">
+                                غنية بالألياف
+                            </p>
+                        </div>
+                        
+                        <!-- Animated Border -->
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-amber-300 rounded-xl md:rounded-2xl transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Bottom Right: Superfoods -->
+                    <div class="relative group cursor-pointer overflow-hidden rounded-xl md:rounded-2xl shadow-lg transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="أطعمة خارقة" 
+                                 class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                        </div>
+                        
+                        <!-- Color Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-purple-600/60 to-transparent group-hover:from-purple-700/70 transition-all duration-300"></div>
+                        
+                        <!-- Floating Icon -->
+                        <div class="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-star text-white text-sm md:text-base"></i>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="absolute bottom-2 left-2 right-2 md:bottom-3 md:left-3 md:right-3 text-white">
+                            <h4 class="font-bold text-sm md:text-lg drop-shadow-lg group-hover:text-purple-200 transition-colors">
+                                أطعمة خارقة
+                            </h4>
+                            <p class="text-xs md:text-sm text-purple-100 drop-shadow-md">
+                                طاقة طبيعية
+                            </p>
+                        </div>
+                        
+                        <!-- Animated Border -->
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-purple-300 rounded-2xl transition-all duration-300"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Features Row -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div class="group relative bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3">
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-100/50 to-emerald-100/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-leaf text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">
+                            100% طبيعي
+                        </h3>
+                        <p class="text-gray-600 text-sm group-hover:text-green-600 transition-colors">
+                            خالي من المواد الكيميائية والمحسنات الصناعية
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="group relative bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-100/50 to-cyan-100/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-shield-alt text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
+                            معتمد عضوياً
+                        </h3>
+                        <p class="text-gray-600 text-sm group-hover:text-blue-600 transition-colors">
+                            حاصل على شهادات الجودة العضوية العالمية
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="group relative bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-100/50 to-yellow-100/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-heart text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-orange-700 transition-colors">
+                            مفيد للصحة
+                        </h3>
+                        <p class="text-gray-600 text-sm group-hover:text-orange-600 transition-colors">
+                            غني بالفيتامينات والمعادن الأساسية للجسم
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="group relative bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-100/50 to-pink-100/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div class="relative z-10 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                            <i class="fas fa-star text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
+                            طعم رائع
+                        </h3>
+                        <p class="text-gray-600 text-sm group-hover:text-purple-600 transition-colors">
+                            نكهات طبيعية لذيذة ومرضية لجميع الأذواق
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call-to-Action Button -->
+            <div class="text-center mt-12">
+                <button class="group relative bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 text-white px-12 py-4 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 overflow-hidden">
+                    <!-- Button Background Animation -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <!-- Button Content -->
+                    <span class="relative z-10 flex items-center justify-center">
+                        <i class="fas fa-shopping-basket ml-3 text-xl group-hover:animate-bounce"></i>
+                        تسوق الأطعمة الصحية الآن
+                        <i class="fas fa-arrow-left mr-3 text-xl group-hover:translate-x-2 transition-transform duration-300"></i>
+                    </span>
+                    
+                    <!-- Shine Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Multi-Banner Section -->
     <section class="py-16 multi-banner-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2929,6 +3537,242 @@
                 });
             });
         });
+
+        // ======= NEW: Healthy Food Section Interactive Features =======
+        document.addEventListener('DOMContentLoaded', function() {
+            // Healthy Food section interactions
+            const healthyFoodSection = document.querySelector('[data-section="healthy-food"]') || 
+                                      document.querySelector('.py-20.relative.overflow-hidden.bg-gradient-to-br.from-green-50');
+            
+            if (healthyFoodSection) {
+                // Large featured image interactions
+                const largeImage = healthyFoodSection.querySelector('.grid.grid-cols-1.lg\\:grid-cols-2 .relative.group.cursor-pointer');
+                if (largeImage) {
+                    largeImage.addEventListener('click', function() {
+                        console.log('النقر على الصورة الرئيسية للأطعمة الصحية');
+                        
+                        // Advanced visual feedback
+                        this.style.transform = 'perspective(1000px) rotateY(5deg) scale(0.98)';
+                        this.style.boxShadow = '0 25px 50px rgba(34, 197, 94, 0.4)';
+                        
+                        setTimeout(() => {
+                            this.style.transform = 'perspective(1000px) rotateY(0deg) scale(1)';
+                            this.style.boxShadow = '';
+                        }, 300);
+                        
+                        // Show notification
+                        showHealthyFoodNotification('تشكيلة متكاملة', 'أطعمة طبيعية 100%', 'success');
+                    });
+                }
+
+                // Small grid images interactions
+                const smallImages = healthyFoodSection.querySelectorAll('.grid.grid-cols-2.gap-4 .relative.group.cursor-pointer');
+                smallImages.forEach((image, index) => {
+                    image.addEventListener('click', function() {
+                        const title = this.querySelector('h4').textContent;
+                        const description = this.querySelector('p').textContent;
+                        
+                        console.log(`النقر على: ${title}`);
+                        
+                        // Unique animation for each category
+                        switch(index) {
+                            case 0: // Fruits
+                                this.style.transform = 'perspective(1000px) rotateX(10deg) scale(1.05)';
+                                this.style.filter = 'hue-rotate(10deg) brightness(1.1)';
+                                break;
+                            case 1: // Vegetables  
+                                this.style.transform = 'perspective(1000px) rotateY(-10deg) scale(1.05)';
+                                this.style.filter = 'saturate(1.3) brightness(1.1)';
+                                break;
+                            case 2: // Grains
+                                this.style.transform = 'perspective(1000px) rotateX(-8deg) scale(1.05)';
+                                this.style.filter = 'sepia(0.2) brightness(1.1)';
+                                break;
+                            case 3: // Superfoods
+                                this.style.transform = 'perspective(1000px) rotateY(8deg) scale(1.05)';
+                                this.style.filter = 'contrast(1.2) brightness(1.1)';
+                                break;
+                        }
+                        
+                        setTimeout(() => {
+                            this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                            this.style.filter = '';
+                        }, 400);
+                        
+                        // Show category notification
+                        showHealthyFoodNotification(title, description, getCategoryColor(index));
+                    });
+                });
+
+                // Feature cards interactions
+                const featureCards = healthyFoodSection.querySelectorAll('.mt-16.grid .group.relative.bg-white\\/60');
+                featureCards.forEach((card, index) => {
+                    card.addEventListener('click', function() {
+                        const title = this.querySelector('h3').textContent;
+                        const description = this.querySelector('p').textContent;
+                        
+                        console.log(`النقر على ميزة: ${title}`);
+                        
+                        // 3D flip animation
+                        this.style.transform = 'perspective(1000px) rotateY(180deg) scale(1.1)';
+                        this.style.transition = 'transform 0.6s ease-in-out';
+                        
+                        setTimeout(() => {
+                            this.style.transform = 'perspective(1000px) rotateY(0deg) scale(1)';
+                        }, 600);
+                        
+                        // Show feature info
+                        showHealthyFoodNotification(title, description, 'feature');
+                    });
+                });
+
+                // CTA Button enhanced interaction
+                const ctaButton = healthyFoodSection.querySelector('.text-center.mt-12 button');
+                if (ctaButton) {
+                    ctaButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        console.log('النقر على زر تسوق الأطعمة الصحية');
+                        
+                        // Advanced button animation
+                        this.style.transform = 'perspective(1000px) rotateX(10deg) scale(0.95)';
+                        this.style.boxShadow = '0 15px 30px rgba(34, 197, 94, 0.6)';
+                        
+                        // Ripple effect
+                        const ripple = document.createElement('div');
+                        ripple.style.cssText = `
+                            position: absolute;
+                            border-radius: 50%;
+                            background: rgba(255, 255, 255, 0.6);
+                            transform: scale(0);
+                            animation: ripple 0.6s linear;
+                            pointer-events: none;
+                            left: 50%;
+                            top: 50%;
+                            width: 100px;
+                            height: 100px;
+                            margin-left: -50px;
+                            margin-top: -50px;
+                        `;
+                        
+                        // Add keyframes for ripple
+                        const style = document.createElement('style');
+                        style.textContent = `
+                            @keyframes ripple {
+                                to {
+                                    transform: scale(4);
+                                    opacity: 0;
+                                }
+                            }
+                        `;
+                        document.head.appendChild(style);
+                        
+                        this.appendChild(ripple);
+                        
+                        setTimeout(() => {
+                            this.style.transform = 'perspective(1000px) rotateX(0deg) scale(1)';
+                            this.style.boxShadow = '';
+                            ripple.remove();
+                        }, 300);
+                        
+                        // Success feedback
+                        setTimeout(() => {
+                            showHealthyFoodNotification(
+                                'جاري التحويل...', 
+                                'سيتم توجيهك إلى قسم الأطعمة الصحية', 
+                                'success'
+                            );
+                        }, 400);
+                    });
+                }
+            }
+        });
+
+        // Helper function to show notifications
+        function showHealthyFoodNotification(title, message, type) {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.healthy-food-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = 'healthy-food-notification fixed top-20 right-6 z-50 transform translate-x-full transition-transform duration-500';
+            
+            const colors = {
+                'success': 'from-green-500 to-emerald-600',
+                'feature': 'from-blue-500 to-cyan-600',
+                0: 'from-orange-500 to-red-500',    // Fruits
+                1: 'from-green-500 to-emerald-600', // Vegetables  
+                2: 'from-amber-500 to-yellow-600',  // Grains
+                3: 'from-purple-500 to-pink-600'    // Superfoods
+            };
+            
+            const bgGradient = colors[type] || colors['success'];
+            
+            notification.innerHTML = `
+                <div class="bg-gradient-to-r ${bgGradient} text-white p-4 rounded-2xl shadow-2xl max-w-sm">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-leaf text-white"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-sm truncate">${title}</h4>
+                            <p class="text-xs text-white/90 mt-1">${message}</p>
+                        </div>
+                        <button onclick="this.closest('.healthy-food-notification').remove()" 
+                                class="text-white/80 hover:text-white transition-colors">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+                notification.classList.add('translate-x-0');
+            }, 100);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.classList.add('translate-x-full');
+                    setTimeout(() => notification.remove(), 500);
+                }
+            }, 4000);
+        }
+
+        // Helper function to get category color
+        function getCategoryColor(index) {
+            return index; // Return index to map with colors object
+        }
+
+        // Parallax effect for healthy food background elements
+        window.addEventListener('scroll', function() {
+            const healthySection = document.querySelector('.py-20.relative.overflow-hidden.bg-gradient-to-br.from-green-50');
+            if (healthySection) {
+                const rect = healthySection.getBoundingClientRect();
+                const inView = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (inView) {
+                    const scrolled = window.pageYOffset;
+                    const parallaxElements = healthySection.querySelectorAll('.absolute.animate-bounce');
+                    
+                    parallaxElements.forEach((element, index) => {
+                        const speed = 0.5 + (index * 0.1);
+                        const yPos = -(scrolled * speed);
+                        element.style.transform = `translateY(${yPos}px)`;
+                    });
+                }
+            }
+        });
+        // ======= END: Healthy Food Section Interactive Features =======
+
+        // Multi-Banner section click handlers
     </script>
 
     <!-- Floating Action Buttons -->
