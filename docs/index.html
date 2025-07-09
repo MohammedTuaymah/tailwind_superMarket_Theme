@@ -66,6 +66,30 @@
             height: auto;
             object-fit: cover;
         }
+        
+        /* Testimonial Swiper Pagination */
+        .testimonial-pagination {
+            margin-top: 2rem !important;
+            text-align: center;
+        }
+        
+        .testimonial-pagination .swiper-pagination-bullet {
+            width: 12px !important;
+            height: 12px !important;
+            background: #d1d5db !important;
+            margin: 0 6px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .testimonial-pagination .swiper-pagination-bullet-active {
+            background: #16a34a !important;
+            transform: scale(1.2) !important;
+        }
+        
+        .testimonial-pagination .swiper-pagination-bullet:hover {
+            background: #22c55e !important;
+            transform: scale(1.1) !important;
+        }
     </style>
 </head>
   <body class="cairo-font">
@@ -1733,6 +1757,261 @@
 
     
 
+    <!-- Customer Reviews Section -->
+    <section class="py-16 m-2 rounded-2xl bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 relative inline-block">
+                    <span class="absolute right-full top-1/2 transform -translate-y-1/2 w-16 h-0.5 bg-green-500 mr-4 hidden md:block"></span>
+                    آراء عملائنا
+                    <span class="absolute left-full top-1/2 transform -translate-y-1/2 w-16 h-0.5 bg-green-500 ml-4 hidden md:block"></span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    اكتشف ما يقوله عملاؤنا الكرام عن تجربتهم مع سوبر ماركت الأسرة
+                </p>
+            </div>
+
+            <!-- Reviews Carousel -->
+            <div class="relative">
+                <!-- Swiper Container -->
+                <div class="swiper testimonial-swiper">
+                    <div class="swiper-wrapper">
+                        
+                        <!-- Review 1 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white rounded-2xl shadow-lg p-8 mx-2 transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-100">
+                                <!-- Customer Photo -->
+                                <div class="flex justify-center mb-6">
+                                    <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-green-500 shadow-lg">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" 
+                                             alt="أحمد السعود" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                
+                                <!-- Review Text -->
+                                <div class="text-center mb-6">
+                                    <div class="relative">
+                                        <i class="fas fa-quote-right text-green-300 text-3xl absolute -top-2 -right-2"></i>
+                                        <p class="text-gray-700 leading-relaxed text-lg italic px-4">
+                                            "أفضل سوبر ماركت تعاملت معه، المنتجات طازجة والأسعار معقولة والخدمة ممتازة. التوصيل سريع والموظفون متعاونون جداً."
+                                        </p>
+                                        <i class="fas fa-quote-left text-green-300 text-3xl absolute -bottom-2 -left-2"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Customer Info -->
+                                <div class="text-center">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">أحمد السعود</h3>
+                                    
+                                    <!-- Rating Stars -->
+                                    <div class="flex justify-center mt-3">
+                                        <div class="flex space-x-1 space-x-reverse">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white rounded-2xl shadow-lg p-8 mx-2 transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-100">
+                                <!-- Customer Photo -->
+                                <div class="flex justify-center mb-6">
+                                    <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-green-500 shadow-lg">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b67fcaca?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" 
+                                             alt="فاطمة الزهراني" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                
+                                <!-- Review Text -->
+                                <div class="text-center mb-6">
+                                    <div class="relative">
+                                        <i class="fas fa-quote-right text-green-300 text-3xl absolute -top-2 -right-2"></i>
+                                        <p class="text-gray-700 leading-relaxed text-lg italic px-4">
+                                            "جودة المنتجات رائعة وخاصة الخضار والفواكه، دائماً طازجة. التطبيق سهل الاستخدام والعروض مغرية. أنصح الجميع بالتعامل معهم."
+                                        </p>
+                                        <i class="fas fa-quote-left text-green-300 text-3xl absolute -bottom-2 -left-2"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Customer Info -->
+                                <div class="text-center">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">فاطمة الزهراني</h3>
+                                    
+                                    <!-- Rating Stars -->
+                                    <div class="flex justify-center mt-3">
+                                        <div class="flex space-x-1 space-x-reverse">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white rounded-2xl shadow-lg p-8 mx-2 transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-100">
+                                <!-- Customer Photo -->
+                                <div class="flex justify-center mb-6">
+                                    <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-green-500 shadow-lg">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" 
+                                             alt="محمد القحطاني" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                
+                                <!-- Review Text -->
+                                <div class="text-center mb-6">
+                                    <div class="relative">
+                                        <i class="fas fa-quote-right text-green-300 text-3xl absolute -top-2 -right-2"></i>
+                                        <p class="text-gray-700 leading-relaxed text-lg italic px-4">
+                                            "سرعة التوصيل مذهلة، والمنتجات تصل في حالة ممتازة. الأسعار منافسة والعروض مستمرة. خدمة العملاء محترفة ومتجاوبة."
+                                        </p>
+                                        <i class="fas fa-quote-left text-green-300 text-3xl absolute -bottom-2 -left-2"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Customer Info -->
+                                <div class="text-center">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">محمد القحطاني</h3>
+                                    
+                                    <!-- Rating Stars -->
+                                    <div class="flex justify-center mt-3">
+                                        <div class="flex space-x-1 space-x-reverse">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 4 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white rounded-2xl shadow-lg p-8 mx-2 transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-100">
+                                <!-- Customer Photo -->
+                                <div class="flex justify-center mb-6">
+                                    <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-green-500 shadow-lg">
+                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" 
+                                             alt="نورا العتيبي" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                
+                                <!-- Review Text -->
+                                <div class="text-center mb-6">
+                                    <div class="relative">
+                                        <i class="fas fa-quote-right text-green-300 text-3xl absolute -top-2 -right-2"></i>
+                                        <p class="text-gray-700 leading-relaxed text-lg italic px-4">
+                                            "أعجبني التنوع الكبير في المنتجات والماركات المختلفة. الموقع منظم والبحث سهل. التعامل مع السوبر ماركت أصبح أسهل وأكثر راحة."
+                                        </p>
+                                        <i class="fas fa-quote-left text-green-300 text-3xl absolute -bottom-2 -left-2"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Customer Info -->
+                                <div class="text-center">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">نورا العتيبي</h3>
+                                    
+                                    <!-- Rating Stars -->
+                                    <div class="flex justify-center mt-3">
+                                        <div class="flex space-x-1 space-x-reverse">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 5 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white rounded-2xl shadow-lg p-8 mx-2 transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-100">
+                                <!-- Customer Photo -->
+                                <div class="flex justify-center mb-6">
+                                    <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-green-500 shadow-lg">
+                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" 
+                                             alt="خالد الشمري" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                
+                                <!-- Review Text -->
+                                <div class="text-center mb-6">
+                                    <div class="relative">
+                                        <i class="fas fa-quote-right text-green-300 text-3xl absolute -top-2 -right-2"></i>
+                                        <p class="text-gray-700 leading-relaxed text-lg italic px-4">
+                                            "الالتزام بالمواعيد رائع، والمنتجات المجمدة تصل في حالة ممتازة. النظافة والتعقيم واضحان. سوبر ماركت يستحق الثقة والتعامل المستمر."
+                                        </p>
+                                        <i class="fas fa-quote-left text-green-300 text-3xl absolute -bottom-2 -left-2"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Customer Info -->
+                                <div class="text-center">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">خالد الشمري</h3>
+                                    
+                                    <!-- Rating Stars -->
+                                    <div class="flex justify-center mt-3">
+                                        <div class="flex space-x-1 space-x-reverse">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination Dots -->
+                    <div class="swiper-pagination testimonial-pagination"></div>
+                </div>
+            </div>
+
+            <!-- Review Stats -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600">4.9</div>
+                    <div class="text-sm text-gray-600">متوسط التقييم</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600">2,500+</div>
+                    <div class="text-sm text-gray-600">مراجعة إيجابية</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600">95%</div>
+                    <div class="text-sm text-gray-600">رضا العملاء</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600">10,000+</div>
+                    <div class="text-sm text-gray-600">عميل سعيد</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2215,6 +2494,49 @@
 
             console.log('Swiper object:', swiper);
             console.log('Category Swiper object:', categorySwiper);
+            
+            // Initialize Testimonial Swiper
+            const testimonialSwiper = new Swiper('.testimonial-swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.testimonial-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 40
+                    }
+                },
+                grabCursor: true,
+                speed: 600,
+                effect: 'slide',
+                centeredSlides: false,
+                slidesPerGroup: 1,
+                on: {
+                    init: function() {
+                        console.log('✅ Testimonial Swiper initialized successfully!');
+                    },
+                    slideChange: function() {
+                        console.log('Testimonial slide changed to:', this.activeIndex);
+                    }
+                }
+            });
+            
+            console.log('Testimonial Swiper object:', testimonialSwiper);
         });
     </script>
 
